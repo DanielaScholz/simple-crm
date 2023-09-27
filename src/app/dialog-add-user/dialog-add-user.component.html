@@ -1,23 +1,23 @@
 <h1 mat-dialog-title>Add user</h1>
 <div mat-dialog-content>
 
-  <form class="example-form">
+  <form class="user-form">
     <table class="full-width" cellspacing="0">
       <tr>
         <td class="pd-16"><mat-form-field class="full-width">
             <mat-label>First name</mat-label>
-            <input matInput>
+            <input [(ngModel)]="user.firstName" matInput name="firstName">
           </mat-form-field></td>
         <td><mat-form-field class="full-width">
             <mat-label>Last name</mat-label>
-            <input matInput>
+            <input [(ngModel)]="user.lastName" matInput name="lastName">
           </mat-form-field></td>
       </tr>
     </table>
 
     <mat-form-field class="full-width">
       <mat-label>Date of birth</mat-label>
-      <input matInput [matDatepicker]="picker">
+      <input [(ngModel)]="dateOfBirth" matInput [matDatepicker]="picker" name="dateOfBirth">
       <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
@@ -25,19 +25,19 @@
 
     <mat-form-field class="full-width">
       <mat-label>Address + House No.</mat-label>
-      <input matInput placeholder="Mustergasse 123">
+      <input [(ngModel)]="user.address" matInput placeholder="Mustergasse 123" name="address">
     </mat-form-field>
 
     <table class="full-width" cellspacing="0">
       <tr>
         <td class="pd-16"><mat-form-field class="full-width">
-            <mat-label>City</mat-label>
-            <input matInput placeholder="Vienna">
-          </mat-form-field></td>
+          <mat-label>Postal code</mat-label>
+          <input [(ngModel)]="user.postalCode" matInput #postalCode maxlength="4" placeholder="1010" name="postalCode">
+          <!-- <mat-hint align="end">{{postalCode.value.length}} / 4</mat-hint> -->
+        </mat-form-field></td>
         <td><mat-form-field class="full-width">
-            <mat-label>Postal Code</mat-label>
-            <input matInput #postalCode maxlength="4" placeholder="1010">
-            <!-- <mat-hint align="end">{{postalCode.value.length}} / 4</mat-hint> -->
+            <mat-label>City</mat-label>
+            <input [(ngModel)]="user.city" matInput placeholder="Vienna" name="city">
           </mat-form-field></td>
       </tr>
     </table>
@@ -46,7 +46,7 @@
       <tr>
         <td><mat-form-field class="full-width">
             <mat-label>Country</mat-label>
-            <input matInput placeholder="Austria">
+            <input [(ngModel)]="user.country" matInput placeholder="Austria" name="country">
           </mat-form-field></td>
       </tr>
     </table>
@@ -55,5 +55,5 @@
 
 <div class="button-container" mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="" cdkFocusInitial>Save</button>
+  <button mat-button [mat-dialog-close]="" cdkFocusInitial (click)="saveUser()">Save</button>
 </div>
