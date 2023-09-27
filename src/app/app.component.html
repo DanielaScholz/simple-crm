@@ -3,18 +3,20 @@
     <div class="logo-container">LOGO</div>
 
     <ul class="menu-items">
-      <li><mat-icon>dashboard</mat-icon>Dashboard</li>
-      <li><mat-icon>personal</mat-icon>User</li>
+      <li [routerLink]="['/']"><mat-icon>dashboard</mat-icon>Dashboard</li>
+      <li [routerLink]="['/user']"><mat-icon>personal</mat-icon>User</li>
     </ul>
   </mat-drawer>
 
-  <div class="example-sidenav-content">
+  <div>
     <mat-toolbar color="primary">
       <mat-icon class="mat-menu" (click)="drawer.toggle()">menu</mat-icon>
       <span>Simple CRM</span>
     </mat-toolbar>
+
+    <div class="router-container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 
 </mat-drawer-container>
-
-<router-outlet></router-outlet>
