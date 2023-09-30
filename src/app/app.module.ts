@@ -13,9 +13,12 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
+import {FormControl, FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {ErrorStateMatcher, MAT_DATE_LOCALE, MatNativeDateModule, ShowOnDirtyErrorStateMatcher} from '@angular/material/core';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatCardModule} from '@angular/material/card';
+
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserComponent } from './user/user.component';
@@ -23,13 +26,16 @@ import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.compon
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     UserComponent,
-    DialogAddUserComponent
+    DialogAddUserComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -46,11 +52,19 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressBarModule,
+    MatCardModule,
+
+    ReactiveFormsModule,
+
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
 
   ],
-  providers: [],
+  providers: [
+    // {provide: MAT_DATE_LOCALE, useValue: 'de-DE'},
+    // {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

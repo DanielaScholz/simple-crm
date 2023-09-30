@@ -21,6 +21,10 @@
     height: 64px;
     border-bottom: 1px solid rgba(0,0,0,.12);
     padding: 16px;
+
+    img{
+        height: 48px;
+    }
 }
 
 .menu-items{
@@ -48,4 +52,5 @@
 .router-container{
     padding-top: 16px;
     padding-left: 57px;
+    padding-right: 57px;
 }
