@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { Firestore, collection, doc, addDoc } from '@angular/fire/firestore';
 
 export class User {
-    firestore: Firestore = inject(Firestore);
+    // firestore: Firestore = inject(Firestore);
 
     firstName: string;
     lastName: string;
@@ -37,9 +37,9 @@ export class User {
         }
     }
 
-    public getUsersColl(){
-        return collection(this.firestore, 'users');
-    }
+    // public getUsersColl(){
+    //     return collection(this.firestore, 'users');
+    // }
 
 
 }

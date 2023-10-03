@@ -1,0 +1,36 @@
+.user-detail-header{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    min-height: 250px;
+    background-color: #FF4786;
+    color: white;
+    padding: 16px;
+
+    img{
+        height: 100px;
+        width: auto;
+        border-radius: 100%;
+        object-fit: cover;
+    }
+}
+
+.user-details{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    height: 100px;
+    justify-content: center;
+    margin-left: 16px;
+
+    h2{
+        margin: 0;
+    }
+}
+
+.edit-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+ 
+}

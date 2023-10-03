@@ -26,8 +26,8 @@ import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.compon
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -56,6 +56,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     MatCardModule,
 
     ReactiveFormsModule,
+    MatMenuModule,
 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
