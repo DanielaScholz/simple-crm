@@ -1,9 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-
-.mt-32{
+.mt-32 {
     margin-top: 32px;
+}
+
+.pd-16 {
+    padding-right: 16px;
+}
+
+.user-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.button-container {
+    padding: 0 24px 9px;
 }

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from 'src/models/user.class';
 import { Firestore, collection, doc, collectionData, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { docData } from 'rxfire/firestore';
 
 @Component({
   selector: 'app-user',
@@ -16,24 +17,28 @@ export class UserComponent implements OnInit {
 
   users = [];
   unsubUser;
-  
+
 
   firestore: Firestore = inject(Firestore);
 
 
   constructor(public dialog: MatDialog) {
-    this.unsubUser = this.subUserList();
 
     // this.allUsers$ = collectionData(this.getUserRef());
-    // this.allUser = this.allUsers$.subscribe((list) =>{
-    //   list.forEach(element => {
-    //     console.log('User ist:',element);
+    // this.allUser = this.allUsers$.subscribe((list) => {
+    //   this.users = [];
+    //   list.forEach((element) => {
+    //     const userData = { ...element.data(), id: element.id };
+    //     this.users.push(userData);
+    //     console.log(this.users);
+    //     console.log('User ist:', element);
     //   });
     // })
 
   }
 
   ngOnInit(): void {
+    this.unsubUser = this.subUserList();
 
     // this.allUsers$ = collectionData(this.coll);
     // console.log(this.allUsers$);
@@ -54,9 +59,8 @@ export class UserComponent implements OnInit {
 
       list.forEach((element) =>{
         const userData = { ...element.data(), id: element.id };
-
         this.users.push(userData);
-        console.log(this.users);
+       // console.log(this.users);
         // console.log(element);
         // console.log(element.id);
         // console.log(element.data());
@@ -64,22 +68,22 @@ export class UserComponent implements OnInit {
     })
   }
 
-  getUserRef(){
+  getUserRef() {
     return collection(this.firestore, 'users');
   }
 
-  getSingleDocRef(colId:string, docId:string){
-   return (doc(collection(this.firestore, colId), docId));
+  getSingleDocRef(userId: string) {
+    return (doc(collection(this.firestore, 'users'), userId));
   }
 
-  async updateUser(user){
-    await updateDoc(this.getSingleDocRef('users', user.id), this.user.toJSON()).catch(
-      (err) => { console.log(err);}
+  async updateUser(userId:string) {
+    await updateDoc(this.getSingleDocRef(userId), this.user.toJSON()).catch(
+      (err) => { console.log(err); }
     );
   }
 
-  openDialog(){
-    this.dialog.open(DialogAddUserComponent)
+  openDialogAddUser() {
+    this.dialog.open(DialogAddUserComponent);
   }
 
 }

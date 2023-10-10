@@ -1,29 +1,30 @@
 <div>
   <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
 
-<h1 mat-dialog-title>Add user</h1>
-<div mat-dialog-content>
+  <h1 mat-dialog-title>Add user</h1>
+  <div mat-dialog-content>
 
-  <form class="user-form">
-    <table class="full-width" cellspacing="0">
-      <tr>
-        <td class="pd-16"><mat-form-field class="full-width">
-            <mat-label>First name</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.firstName" matInput placeholder="Max" name="firstName">
-          </mat-form-field></td>
-        <td><mat-form-field class="full-width">
-            <mat-label>Last name</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.lastName" matInput placeholder="Mustermann" name="lastName">
-          </mat-form-field></td>
-      </tr>
-    </table>
+    <form class="user-form">
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td class="pd-16"><mat-form-field class="full-width">
+              <mat-label>First name</mat-label>
+              <input [disabled]="loading" [(ngModel)]="user.firstName" matInput placeholder="Max" name="firstName">
+            </mat-form-field></td>
+          <td><mat-form-field class="full-width">
+              <mat-label>Last name</mat-label>
+              <input [disabled]="loading" [(ngModel)]="user.lastName" matInput placeholder="Mustermann" name="lastName">
+            </mat-form-field></td>
+        </tr>
+      </table>
 
-    <mat-form-field class="full-width">
-      <mat-label>E-mail</mat-label>
-      <input [disabled]="loading" [(ngModel)]="user.eMail" matInput placeholder="max.mustermann@gmail.com" name="eMail">
-    </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>E-mail</mat-label>
+        <input [disabled]="loading" [(ngModel)]="user.eMail" matInput placeholder="max.mustermann@gmail.com"
+          name="eMail">
+      </mat-form-field>
 
-    <!-- <mat-form-field class="full-width">
+      <!-- <mat-form-field class="full-width">
       <mat-label>Email</mat-label>
       <input type="email" name="eMail" [(ngModel)]="user.eMail" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
              placeholder="max.mustermann@gmail.com">
@@ -35,48 +36,48 @@
       </mat-error>
     </mat-form-field> -->
 
-    <mat-form-field class="full-width">
-      <mat-label>Date of birth</mat-label>
-      <input [disabled]="loading" [(ngModel)]="dateOfBirth" matInput [matDatepicker]="picker" name="dateOfBirth">
-      <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Date of birth</mat-label>
+        <input [disabled]="loading" [(ngModel)]="dateOfBirth" matInput [matDatepicker]="picker" name="dateOfBirth">
+        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-    <mat-form-field class="full-width">
-      <mat-label>Address + House No.</mat-label>
-      <input [disabled]="loading" [(ngModel)]="user.address" matInput placeholder="Mustergasse 123" name="address">
-    </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Address + House No.</mat-label>
+        <input [disabled]="loading" [(ngModel)]="user.address" matInput placeholder="Mustergasse 123" name="address">
+      </mat-form-field>
 
-    <table class="full-width" cellspacing="0">
-      <tr>
-        <td class="pd-16"><mat-form-field class="full-width">
-          <mat-label>Postal code</mat-label>
-          <input [disabled]="loading" [(ngModel)]="user.postalCode" matInput #postalCode maxlength="4" placeholder="1010" name="postalCode">
-          <!-- <mat-hint align="end">{{postalCode.value.length}} / 4</mat-hint> -->
-        </mat-form-field></td>
-        <td><mat-form-field class="full-width">
-            <mat-label>City</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.city" matInput placeholder="Vienna" name="city">
-          </mat-form-field></td>
-      </tr>
-    </table>
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td class="pd-16"><mat-form-field class="full-width">
+              <mat-label>Postal code</mat-label>
+              <input [disabled]="loading" [(ngModel)]="user.postalCode" matInput #postalCode maxlength="4"
+                placeholder="1010" name="postalCode">
+              <!-- <mat-hint align="end">{{postalCode.value.length}} / 4</mat-hint> -->
+            </mat-form-field></td>
+          <td><mat-form-field class="full-width">
+              <mat-label>City</mat-label>
+              <input [disabled]="loading" [(ngModel)]="user.city" matInput placeholder="Vienna" name="city">
+            </mat-form-field></td>
+        </tr>
+      </table>
 
-    <table class="full-width" cellspacing="0">
-      <tr>
-        <td><mat-form-field class="full-width">
-            <mat-label>Country</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.country" matInput placeholder="Austria" name="country">
-          </mat-form-field></td>
-      </tr>
-    </table>
-  </form>
-</div>
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td><mat-form-field class="full-width">
+              <mat-label>Country</mat-label>
+              <input [disabled]="loading" [(ngModel)]="user.country" matInput placeholder="Austria" name="country">
+            </mat-form-field></td>
+        </tr>
+      </table>
+    </form>
+  </div>
 
-<div class="button-container" mat-dialog-actions>
-  <button mat-button (click)="closeDialog()">Cancel</button>
-  <button mat-button [disabled]="loading" (click)="saveUser()">Save</button>
-</div>
-
-
+  <div class="button-container" mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancel</button>
+    <button mat-button [disabled]="loading" (click)="saveUser()">Save</button>
+  </div>
+  
 </div>

@@ -1,0 +1,46 @@
+<div>
+    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+  
+    <h1 mat-dialog-title>Edit user address</h1>
+    <div mat-dialog-content>
+  
+      <form class="user-form">
+ 
+        <mat-form-field class="full-width">
+          <mat-label>Address + House No.</mat-label>
+          <input [disabled]="loading" [(ngModel)]="user.address" matInput placeholder="Mustergasse 123" name="address">
+        </mat-form-field>
+  
+        <table class="full-width" cellspacing="0">
+          <tr>
+            <td class="pd-16"><mat-form-field class="full-width">
+                <mat-label>Postal code</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.postalCode" matInput #postalCode maxlength="4"
+                  placeholder="1010" name="postalCode">
+                <!-- <mat-hint align="end">{{postalCode.value.length}} / 4</mat-hint> -->
+              </mat-form-field></td>
+            <td><mat-form-field class="full-width">
+                <mat-label>City</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.city" matInput placeholder="Vienna" name="city">
+              </mat-form-field></td>
+          </tr>
+        </table>
+  
+        <table class="full-width" cellspacing="0">
+          <tr>
+            <td><mat-form-field class="full-width">
+                <mat-label>Country</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.country" matInput placeholder="Austria" name="country">
+              </mat-form-field></td>
+          </tr>
+        </table>
+      </form>
+
+    </div>
+  
+    <div class="button-container" mat-dialog-actions>
+      <button mat-button (click)="closeDialog()">Cancel</button>
+      <button mat-button [disabled]="loading" (click)="saveChanges()">Save</button>
+    </div>
+    
+  </div>

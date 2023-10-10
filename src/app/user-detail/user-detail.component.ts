@@ -1,9 +1,12 @@
-import { query } from '@angular/animations';
 import { Component, OnInit, inject } from '@angular/core';
-import { Firestore, collection, doc, getDoc, getDocs, onSnapshot, where } from '@angular/fire/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { Firestore, collection, deleteDoc, doc, docData } from '@angular/fire/firestore';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/models/user.class';
-// import { collection } from 'rxfire/firestore';
+import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
+import { DialogDeleteUserComponent } from '../dialog-delete-user/dialog-delete-user.component';
+
 
 @Component({
   selector: 'app-user-detail',
@@ -11,14 +14,14 @@ import { User } from 'src/models/user.class';
   styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent implements OnInit {
-
   userId: string;
   user: User = new User();
-
   firestore: Firestore = inject(Firestore);
 
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -28,23 +31,34 @@ export class UserDetailComponent implements OnInit {
     })
   }
 
-  async getUserData() {
+  getUserData() {
     let ref = doc(this.firestore, 'users', this.userId);
-    let docSnap = await getDoc(ref);
-    let userData = docSnap.data();
-    this.user = new User(userData);
+    docData(ref).subscribe((userData: any) => {
+      console.log(userData);
+      this.user = new User(userData);
+    })
   }
 
   getSingleDocRef(colId: string, docId: string) {
     return (doc(collection(this.firestore, colId), docId));
   }
 
-  editUserDetail(){
-
+  editUserDetail() {
+    let dialog = this.dialog.open(DialogEditUserComponent);
+    dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.componentInstance.userId = this.userId;
   }
 
-  editAddressDetail(){
-    
+  editAddressDetail() {
+    let dialog = this.dialog.open(DialogEditAddressComponent);
+    dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.componentInstance.userId = this.userId;
+  }
+
+  deleteUser() {
+    let dialog = this.dialog.open(DialogDeleteUserComponent);
+    dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.componentInstance.userId = this.userId;
   }
 
 

@@ -1,34 +1,40 @@
 <mat-card class="user-detail-header">
-    <button [matMenuTriggerFor]="userMenu" mat-icon-button class="edit-btn" (click)="editUserDetail()">
-        <mat-icon>more_vert</mat-icon>
-      </button>
+  <button [matMenuTriggerFor]="userMenu" mat-icon-button class="edit-btn">
+    <mat-icon>more_vert</mat-icon>
+  </button>
 
-      <mat-menu #userMenu="matMenu">
-        <button mat-menu-item>Edit user</button>
-      </mat-menu>
-    
-    <img src="../../assets/img/profil.png" alt="profil-picture">
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item (click)="editUserDetail()">Edit user</button>
+    <button mat-menu-item (click)="deleteUser()">Delete user</button>
+  </mat-menu>
+
+
+
+  <div class="user-deatails-container">
+    <img src="../../assets/img/user-circle.png" alt="profil-picture">
     <div class="user-details">
-        <h2> {{ user.firstName }} {{ user.lastName }}</h2>
-        {{ user.eMail }}
+      <h2> {{ user.firstName }} {{ user.lastName }}</h2>
+      {{ user.eMail }} <br>
+      {{ user.dateOfBirth }}
     </div>
+  </div>
 </mat-card>
 
 <mat-card class="mt-32">
-    <button [matMenuTriggerFor]="addressMenu" mat-icon-button color="primary" class="edit-btn" (click)="editAddressDetail()">
-        <mat-icon>more_vert</mat-icon>
-      </button>
+  <button [matMenuTriggerFor]="addressMenu" mat-icon-button color="primary" class="edit-btn">
+    <mat-icon>more_vert</mat-icon>
+  </button>
 
-      <mat-menu #addressMenu="matMenu">
-        <button mat-menu-item>Edit address</button>
-      </mat-menu>
+  <mat-menu #addressMenu="matMenu">
+    <button mat-menu-item (click)="editAddressDetail()">Edit address</button>
+  </mat-menu>
 
-    <mat-card-header>
-        <mat-card-title> Address</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        {{ user.address}} <br>
-        {{ user.postalCode }}, {{ user.city }} <br>
-        {{ user.country }}
-    </mat-card-content>
+  <mat-card-header>
+    <mat-card-title> Address</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    {{ user.address}} <br>
+    {{ user.postalCode }}, {{ user.city }} <br>
+    {{ user.country }}
+  </mat-card-content>
 </mat-card>
