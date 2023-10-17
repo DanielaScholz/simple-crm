@@ -1,10 +1,10 @@
-<mat-card>
-    <mat-card-header>
-      <mat-card-title>CONFORMATION</mat-card-title>
-      <mat-card-subtitle>Do want delete this user ?</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-actions class="">
-      <button mat-button (click)="dialogRef.close()">CANCEL</button>
-      <button mat-button (click)="deleteUser()">DELETE</button>
-    </mat-card-actions>
-  </mat-card>
+<div>
+  <h1 mat-dialog-title>Delete user</h1>
+  <div mat-dialog-content>
+    Would you like to delete this user?
+  </div>
+  <div mat-dialog-actions class="button-container">
+    <button mat-button (click)="closeDialog()">Cancel</button>
+    <button mat-button (click)="deleteUser()">Delete</button>
+  </div>
+</div>

@@ -22,9 +22,13 @@ export class DialogDeleteUserComponent {
   async deleteUser(){
     await deleteDoc(doc(this.firestore, "users", this.userId))
     .then(()=> {
-      this.dialogRef.close();
+      this.closeDialog();
       this.router.navigate(['user']);
     })
+  }
+
+  closeDialog(){
+    this.dialogRef.close();
   }
 
 }

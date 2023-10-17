@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
-import { Firestore, collection, doc, onSnapshot, query, updateDoc } from '@angular/fire/firestore';
+import { Component, OnInit, inject } from '@angular/core';
+import { Firestore, collection, doc, updateDoc } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 
@@ -16,7 +16,7 @@ export class DialogEditAddressComponent implements OnInit {
 
   loading = false;
 
-  constructor(public dialogRef: MatDialogRef<DialogEditAddressComponent>, private cdRef: ChangeDetectorRef) { }
+  constructor(public dialogRef: MatDialogRef<DialogEditAddressComponent>) { }
 
   ngOnInit(): void {
   }

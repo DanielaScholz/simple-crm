@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { Firestore, collection, doc, addDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
 import { User } from 'src/models/user.class';
 
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
@@ -23,9 +22,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class DialogAddUserComponent {
   user = new User();
-  dateOfBirth: any = Date;
   loading = false;
   firestore: Firestore = inject(Firestore);
+
+  dateOfBirth: any;
+  minDate: Date;
+  maxDate: Date;
 
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
@@ -33,11 +35,15 @@ export class DialogAddUserComponent {
 
 
   constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) {
-    //const itemCollection = collection(this.firestore, 'items');
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth() + 1;
+    const currentDay = new Date().getDate();
+    this.minDate = new Date(currentYear - 100, 0, 1);
+    this.maxDate = new Date(currentYear, currentMonth -1, currentDay); 
   }
 
   async saveUser() {
-    this.user.dateOfBirth = this.dateOfBirth.getTime();
+      this.user.dateOfBirth = this.dateOfBirth.getTime();
     //console.log('the user is:', this.user);
     this.loading = true;
 

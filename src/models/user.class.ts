@@ -7,7 +7,7 @@ export class User {
     firstName: string;
     lastName: string;
     eMail: string;
-    dateOfBirth: Date;
+    dateOfBirth: Date | any;
     address: string;
     postalCode: number;
     city: string;

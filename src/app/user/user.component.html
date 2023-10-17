@@ -1,3 +1,8 @@
+<mat-form-field appearance="outline" class="full-width">
+  <input matInput placeholder="Search..."[(ngModel)]="searchQuery" (input)="filterData()">
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+
 <mat-card>
   <!-- <mat-card-content>Simple card</mat-card-content> -->
   <table class="user-table">
@@ -6,10 +11,10 @@
       <th>E-Mail</th>
       <th>City</th>
     </tr>
-    <tr *ngFor="let user of users" [routerLink]="['/user/' + user.id]">
-      <td> {{ user.firstName }} {{user.lastName}}</td>
-      <td>{{ user.eMail }}</td>
-      <td>{{ user.city }}</td>
+    <tr *ngFor="let item of filteredUsers" [routerLink]="['/user/' + item.id]">
+      <td> {{ item.firstName }} {{user.lastName}}</td>
+      <td>{{ item.eMail }}</td>
+      <td>{{ item.city }}</td>
     </tr>
 
   </table>
