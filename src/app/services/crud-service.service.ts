@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, addDoc, collection, deleteDoc, doc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, deleteDoc, doc, docData, updateDoc } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/models/user.class';
 
@@ -10,6 +10,9 @@ import { User } from 'src/models/user.class';
 export class CrudServiceService {
   firestore: Firestore = inject(Firestore);
   user: User = new User();
+
+  allOrders: { amount: number; price: number; item: string; }[] = [];
+
 
 
   constructor(public route: ActivatedRoute) {}
@@ -22,6 +25,12 @@ export class CrudServiceService {
 
   getSingleDocRef(collId: string, userId: string) {
     return (doc(collection(this.firestore, collId), userId));
+  }
+
+  
+  getUserById(userId:string) {
+    const userIdRef = doc(this.firestore, 'users', userId);    
+    return docData(userIdRef, { idField: 'id' });
   }
 
   async update(userId:string, list:any){

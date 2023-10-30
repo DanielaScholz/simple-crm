@@ -27,7 +27,7 @@ export class UserDetailComponent implements OnInit {
 
   order: Order = new Order();
   newOrder;
-  allOrders: (string | number)[] = [];
+  allOrders: { amount: number; price: number; item: string; }[] = [];
 
   newNote: string;
   notesList: string[] = [];
@@ -61,6 +61,7 @@ export class UserDetailComponent implements OnInit {
       // this.order = new Order(this.user.orders); 
       this.checkIfNotes();     
       this.allOrders = this.user.orders;
+      // this.crud.allOrders = this.user.orders;
       this.dateOfBirth = this.user.dateOfBirth
       this.converteDateOfBirth();
     })

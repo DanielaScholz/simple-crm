@@ -18,27 +18,39 @@ export class DialogAddOrderComponent implements OnInit {
   order: Order = new Order();
   firestore: Firestore = inject(Firestore);
 
-  newOrder: Array<any> = [];
+  allOrders: { amount: number; price: number; item: string; }[] = [];
+
 
 
   constructor(
     public crud: CrudServiceService,
-    public dialogRef: MatDialogRef<DialogAddOrderComponent>) { }
+    public dialogRef: MatDialogRef<DialogAddOrderComponent>) {
+
+
+  }
 
 
   ngOnInit(): void {
+    this.getUserById();
+  }
 
+  getUserById() {
+    const userArr = this.crud.getUserById(this.userId)
+    userArr.subscribe((user) => {
+      this.user = new User(user);
+      (this.user.orders);
+    })
   }
 
 
   addOrder() {
-    this.newOrder.push(this.order.toJSON());
-    this.saveOrder(this.newOrder);
+    this.crud.allOrders.push(this.order.toJSON())
+    this.saveOrder();
   }
 
 
-  saveOrder(newOrder) {
-    this.crud.update(this.userId, { orders: newOrder })
+  saveOrder() {
+    this.crud.update(this.userId, { orders: this.crud.allOrders })
       .then(() => {
         this.loading = false;
         this.dialogRef.close();
