@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, collection, doc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, deleteDoc, doc, updateDoc } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/models/user.class';
 
@@ -16,9 +16,9 @@ export class CrudServiceService {
 
 
 
-
-
-
+  getUserRef() {
+    return collection(this.firestore, 'users');
+  }
 
   getSingleDocRef(collId: string, userId: string) {
     return (doc(collection(this.firestore, collId), userId));
@@ -30,27 +30,12 @@ export class CrudServiceService {
       );
   }
 
+  async save(json){
+    await addDoc(this.getUserRef(), json)
+  }
 
-  // await updateDoc(this.getSingleDocRef('users', this.userId), { orders: this.allOrders })
-
-
-  // async updateUser(userId: string, user: any) {
-  //   await updateDoc(this.getSingleDocRef('users', userId), user.toJSON()).catch(
-  //     (err) => { console.log(err); }
-  //   );
-  // }
-
-
-  // async updateNotes(userId: string, newNote: any) {
-  //   await updateDoc(this.getSingleDocRef('users', userId), { notes: newNote }).catch(
-  //     (err) => { console.log(err); }
-  //   );
-  // }
-
-
-
-
-
-
+  async deleteUser(userId:string){
+    await deleteDoc(doc(this.firestore, 'users', userId))
+  }
 
 }

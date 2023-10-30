@@ -5,6 +5,7 @@ import { User } from 'src/models/user.class';
 
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { CrudServiceService } from '../services/crud-service.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -30,27 +31,30 @@ export class DialogAddUserComponent {
   maxDate: Date;
 
 
+
+
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   matcher = new MyErrorStateMatcher();
 
 
-  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) {
+  constructor(
+    public dialogRef: MatDialogRef<DialogAddUserComponent>,
+    public crud: CrudServiceService) {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth() + 1;
     const currentDay = new Date().getDate();
     this.minDate = new Date(currentYear - 100, 0, 1);
-    this.maxDate = new Date(currentYear, currentMonth -1, currentDay); 
+    this.maxDate = new Date(currentYear, currentMonth - 1, currentDay);
   }
 
-  async saveUser() {
-      this.user.dateOfBirth = this.dateOfBirth.getTime();
+   saveUser() {
+    this.user.dateOfBirth = this.dateOfBirth.getTime();
     this.loading = true;
-
-    await addDoc(collection(this.firestore, 'users'), this.user.toJSON())
-    .then(() =>{
-      this.loading = false;
-      this.dialogRef.close();
-    })
+    this.crud.save(this.user.toJSON())
+      .then(() => {
+        this.loading = false;
+        this.dialogRef.close();
+      })
   }
 
 

@@ -6,6 +6,7 @@ import { Firestore, collection, doc, collectionData, onSnapshot, updateDoc } fro
 import { docData } from 'rxfire/firestore';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
+import { CrudServiceService } from '../services/crud-service.service';
 
 @Component({
   selector: 'app-user',
@@ -25,78 +26,59 @@ export class UserComponent implements OnInit {
 
 
 
-  constructor(public dialog: MatDialog){}
+  constructor(
+    public dialog: MatDialog,
+    public crud: CrudServiceService) { }
 
-
-
-      // this.allUsers$ = collectionData(this.getUserRef());
-      // this.allUser = this.allUsers$.subscribe((list) => {
-      //   this.users = [];
-      //   list.forEach((element) => {
-      //     const userData = { ...element.data(), id: element.id };
-      //     this.users.push(userData);
-      //     console.log(this.users);
-      //     console.log('User ist:', element);
-      //   });
-      // })
-
-    
-
-
+  // this.allUsers$ = collectionData(this.getUserRef());
+  // this.allUser = this.allUsers$.subscribe((list) => {
+  //   this.users = [];
+  //   list.forEach((element) => {
+  //     const userData = { ...element.data(), id: element.id };
+  //     this.users.push(userData);
+  //     console.log(this.users);
+  //     console.log('User ist:', element);
+  //   });
+  // })
 
   ngOnInit(): void {
-      this.unsubUser = this.subUserList();
+    this.unsubUser = this.subUserList();
 
-      // this.allUsers$ = collectionData(this.coll);
-      // console.log(this.allUsers$);
-      // this.allUsers$.subscribe((data) => {
-      //   console.log('data of observable', data);
-      // })
-    }
-
-  ngOnDestroy(){
-      //this.allUser.unsubscribe();
-      this.unsubUser();
-    }
-
-
-  subUserList(){
-      return onSnapshot(this.getUserRef(), (list) => {
-        this.users = [];
-        this.filteredUsers = [];
-
-        list.forEach((element) => {
-          const userData = { ...element.data(), id: element.id };
-          console.log(userData);
-          
-          this.users.push(userData);
-          this.filteredUsers.push(userData);
-          // console.log(element);
-          // console.log(element.id);
-          // console.log(element.data());
-        })
-      })
-    }
-
-  getUserRef() {
-      return collection(this.firestore, 'users');
-    }
-
-  getSingleDocRef(userId: string) {
-      return(doc(collection(this.firestore, 'users'), userId));
+    // this.allUsers$ = collectionData(this.coll);
+    // console.log(this.allUsers$);
+    // this.allUsers$.subscribe((data) => {
+    //   console.log('data of observable', data);
+    // })
   }
 
-  async updateUser(userId: string) {
-    await updateDoc(this.getSingleDocRef(userId), this.user.toJSON()).catch(
-      (err) => { console.log(err); }
-    );
+  ngOnDestroy() {
+    //this.allUser.unsubscribe();
+    this.unsubUser();
+  }
+
+  subUserList() {
+    return onSnapshot(this.crud.getUserRef(), (list) => {
+      this.users = [];
+      this.filteredUsers = [];
+
+      list.forEach((element) => {
+        const userData = { ...element.data(), id: element.id };
+        console.log(userData);
+
+        this.users.push(userData);
+        this.filteredUsers.push(userData);
+        // console.log(element);
+        // console.log(element.id);
+        // console.log(element.data());
+      })
+    })
   }
 
   openDialogAddUser() {
     this.dialog.open(DialogAddUserComponent);
   }
 
-  filterData(){
+  filterData() {
     this.filteredUsers = this.users.filter(item => {
       return (
         item.firstName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
@@ -105,10 +87,10 @@ export class UserComponent implements OnInit {
       );
     });
 
-  
-    
-    
-    
+
+
+
+
   }
 
 

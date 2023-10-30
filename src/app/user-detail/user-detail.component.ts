@@ -41,16 +41,16 @@ export class UserDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.route.paramMap.subscribe((paramMap) => {
-    //   console.log(paramMap)
-    //   this.userId = paramMap.get('id');
-    //   this.getUserData(this.userId);
-    // })
-
-    this.route.params.subscribe((params) =>{
-      this.userId = params['id'];
+    this.route.paramMap.subscribe((paramMap) => {
+      console.log(paramMap)
+      this.userId = paramMap.get('id');
       this.getUserData(this.userId);
     })
+
+    // this.route.params.subscribe((params) =>{
+    //   this.userId = params['id'];
+    //   this.getUserData(this.userId);
+    // })
   }
 
   getUserData(userId) {
@@ -107,23 +107,14 @@ export class UserDetailComponent implements OnInit {
     if (this.newNote.trim() !== '') {
       this.notesList.push(this.newNote);
       this.newNote = ''; // Das Eingabefeld leeren
-      // this.updateNotes(this.userId, this.notesList)
       this.crud.update(this.userId, {notes: this.notesList})
     }
   }
 
   deleteNote(i: number) {
     this.notesList.splice(i, 1);
-    // this.updateNotes(this.userId, this.notesList)
     this.crud.update(this.userId, {notes: this.notesList})
-
   }
-
-  // async updateNotes(userId: string, newNote) {
-  //   await updateDoc(this.getSingleDocRef('users', userId), { notes: newNote }).catch(
-  //     (err) => { console.log(err); }
-  //   );
-  // }
 
   //ORDER
   openDialogAddOrder() {
@@ -139,11 +130,9 @@ export class UserDetailComponent implements OnInit {
     dialog.componentInstance.userId = this.userId;
   }
 
-  deleteOrder(i) {
+  deleteOrder(i:number) {
     this.allOrders.splice(i, 1);
-    updateDoc(this.getSingleDocRef('users', this.userId), { orders: this.allOrders })
+    this.crud.update(this.userId, {orders: this.allOrders})
   }
-
-
 
 }
