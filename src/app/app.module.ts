@@ -31,6 +31,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { DialogDeleteUserComponent } from './dialog-delete-user/dialog-delete-user.component';
+import { DialogAddOrderComponent } from './dialog-add-order/dialog-add-order.component';
+import { DialogEditOrderComponent } from './dialog-edit-order/dialog-edit-order.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { DialogDeleteUserComponent } from './dialog-delete-user/dialog-delete-us
     UserDetailComponent,
     DialogEditAddressComponent,
     DialogEditUserComponent,
-    DialogDeleteUserComponent
+    DialogDeleteUserComponent,
+    DialogAddOrderComponent,
+    DialogEditOrderComponent
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ export class DialogEditUserComponent {
   firestore: Firestore = inject(Firestore);
 
   loading= false;
-  dateOfBirth: any = Date;
+  dateOfBirth: Date;
 
   constructor(public dialogRef: MatDialogRef<DialogEditUserComponent>){}
 
@@ -26,13 +26,10 @@ export class DialogEditUserComponent {
     this.updateUser(this.userId,this.user)
       .then(() => {
         this.loading = false;
-        this.closeDialog();
+        this.dialogRef.close();
       })
   }
 
-  closeDialog() {
-    this.dialogRef.close();
-  }
 
   getSingleDocRef(collId: string, userId: string) {
     return (doc(collection(this.firestore, collId), userId));

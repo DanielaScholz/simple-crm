@@ -1,17 +1,14 @@
-import { inject } from '@angular/core';
-import { Firestore, collection, doc, addDoc } from '@angular/fire/firestore';
-
 export class User {
-    // firestore: Firestore = inject(Firestore);
-
     firstName: string;
     lastName: string;
     eMail: string;
-    dateOfBirth: Date | any;
+    dateOfBirth: any;
     address: string;
     postalCode: number;
     city: string;
     country: string;
+    notes: Array <string>;
+    orders: Array <any>;
 
     constructor(obj?: any){
         this.firstName = obj? obj.firstName : '';
@@ -22,6 +19,8 @@ export class User {
         this.postalCode = obj? obj.postalCode : '';
         this.city = obj? obj.city : '';
         this.country = obj? obj.country : '';
+        this.notes = obj? obj.notes : [];
+        this.orders = obj? obj.orders : [];
     }
 
     public toJSON(){
@@ -33,13 +32,55 @@ export class User {
             address: this.address,
             postalCode: this.postalCode,
             city: this.city,
-            country: this.country
+            country: this.country,
+            notes: this.notes,
+            orders: this.orders
         }
     }
 
-    // public getUsersColl(){
-    //     return collection(this.firestore, 'users');
+}
+
+export class Order {
+    public amount: number = 0;
+    public price: number = 0;
+    public item: string = '';
+
+
+    // constructor(obj?: any){
+    //     this.amount = obj? obj.amount : 0;
+    //     this.price = obj? obj.price : 0;
+    //     this.item = obj? obj.item : '';
     // }
 
-
+    
+    public toJSON(){
+        return{
+            amount: this.amount,
+            price: this.price,
+            item: this.item,
+        }
+    }
 }
+
+
+// export class Order {
+//     amount: number = 0;
+//     price: number = ;
+//     item: string = '';
+
+//     constructor(obj?: any) {
+//         if (obj) {
+//             this.amount = obj.amount || 0;
+//             this.price = obj.price || 0;
+//             this.item = obj.item || '';
+//         }
+//     }
+
+//     public toJSON() {
+//         return {
+//             amount: this.amount,
+//             price: this.price,
+//             item: this.item,
+//         };
+//     }
+// }

@@ -67,9 +67,10 @@ export class UserComponent implements OnInit {
 
         list.forEach((element) => {
           const userData = { ...element.data(), id: element.id };
+          console.log(userData);
+          
           this.users.push(userData);
           this.filteredUsers.push(userData);
-          // console.log(userData);
           // console.log(element);
           // console.log(element.id);
           // console.log(element.data());

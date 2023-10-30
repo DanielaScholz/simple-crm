@@ -47,7 +47,7 @@
     </div>
   
     <div mat-dialog-actions class="button-container">
-      <button mat-button (click)="closeDialog()">Cancel</button>
+      <button mat-button (click)="dialogRef.close()">Cancel</button>
       <button mat-button [disabled]="loading" (click)="saveChanges()">Save</button>
     </div>
     

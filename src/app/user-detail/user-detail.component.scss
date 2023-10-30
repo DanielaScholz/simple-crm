@@ -36,5 +36,21 @@
     position: absolute;
     top: 0;
     right: 0;
- 
 }
+
+.note-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// ORDERS
+
+.add-order-btn {
+    display: flex;
+    justify-content: end;
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+
+

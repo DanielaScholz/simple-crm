@@ -1,0 +1,41 @@
+<div>
+    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
+    <h1 mat-dialog-title>Add order</h1>
+    <div mat-dialog-content>
+
+        <form class="user-form">
+            <table class="full-width" cellspacing="0">
+                <tr>
+                    <td class="pd-16">
+                        <mat-form-field floatLabel="always">
+                            <mat-label>Amount</mat-label>
+                            <input [disabled]="loading" [(ngModel)]="order.amount" matInput type="number" class="example-right-align" min="1" placeholder="1" name="amount">
+                        </mat-form-field>
+                    </td>
+
+ 
+                    <td>
+                        <mat-form-field floatLabel="always">
+                            <mat-label>Price per unit</mat-label>
+                            <span matTextPrefix>€&nbsp;</span>
+                            <input [disabled]="loading" [(ngModel)]="order.price" matInput type="number" class="example-right-align" min="1" placeholder="1,00" name="price">
+                          </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+
+            <mat-form-field class="full-width">
+                <mat-label>Item description</mat-label>
+                <input [disabled]="loading" [(ngModel)]="order.item" matInput placeholder="Item" name="item">
+            </mat-form-field>
+
+        </form>
+    </div>
+
+    <div class="button-container" mat-dialog-actions>
+        <button mat-button (click)="dialogRef.close()">Cancel</button>
+        <button mat-button [disabled]="loading" (click)="addOrder()">Save</button>
+    </div>
+
+</div>

@@ -25,7 +25,7 @@ export class DialogAddUserComponent {
   loading = false;
   firestore: Firestore = inject(Firestore);
 
-  dateOfBirth: any;
+  dateOfBirth: Date;
   minDate: Date;
   maxDate: Date;
 
@@ -44,21 +44,16 @@ export class DialogAddUserComponent {
 
   async saveUser() {
       this.user.dateOfBirth = this.dateOfBirth.getTime();
-    //console.log('the user is:', this.user);
     this.loading = true;
 
     await addDoc(collection(this.firestore, 'users'), this.user.toJSON())
-    .then((info:any) =>{
+    .then(() =>{
       this.loading = false;
-      // console.log(info)
-      // console.log(info.id)
-      this.closeDialog();
+      this.dialogRef.close();
     })
   }
 
-  closeDialog() {
-    this.dialogRef.close();
-  }
+
 
 
 }

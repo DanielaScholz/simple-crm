@@ -13,7 +13,7 @@
     <div class="user-details">
       <h2> {{ user.firstName }} {{ user.lastName }}</h2>
       {{ user.eMail }} <br>
-      {{ user.dateOfBirth }}
+      {{ dateOfBirth }}
     </div>
   </div>
 </mat-card>
@@ -38,17 +38,64 @@
 </mat-card>
 
 
-<div>
-
-</div>
-
+<!-- ORDERS -->
 <mat-card class="mt-32">
+  <mat-card-header>
+    <mat-card-title> Orders</mat-card-title>
+  </mat-card-header>
+
+  <ul>
+    <li *ngFor="let order of allOrders; let i =index">
+      <div class="note-box">
+        {{ user.orders[i].amount }}
+        {{ user.orders[i].item }}
+        {{ user.orders[i].price }} €
+        {{ user.orders[i].amount * user.orders[i].price }}
+
+
+        <button (click)="openDialogEditOrder(i)" mat-icon-button color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="deleteOrder(i)" mat-icon-button color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </li>
+  </ul>
+
+  <div class="add-order-btn">
+    <button mat-mini-fab (click)="openDialogAddOrder()" color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+
+  </div>
+</mat-card>
+
+
+
+
+
+
+<!-- NOTES -->
+<mat-card class="mt-32">
+  <mat-card-header>
+    <mat-card-title> Notes</mat-card-title>
+  </mat-card-header>
+
+  <ul>
+    <li *ngFor="let note of notesList; let i =index">
+      <div class="note-box">
+        {{ note }}
+        <button (click)="deleteNote(i)" mat-icon-button color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </li>
+  </ul>
+
   <mat-form-field>
-    <mat-label>Notes...</mat-label>
-    <textarea matInput></textarea>
+    <textarea matInput [(ngModel)]="newNote" placeholder="Take notes..."></textarea>
   </mat-form-field>
 </mat-card>
 
-<button mat-raised-button color="accent">Accent</button>
-
-
+<button mat-raised-button color="accent" (click)="addNote()">Submit</button>
