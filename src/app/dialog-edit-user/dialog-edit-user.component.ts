@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Firestore, collection, doc, updateDoc } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
@@ -10,7 +10,7 @@ import { CrudServiceService } from '../services/crud-service.service';
   templateUrl: './dialog-edit-user.component.html',
   styleUrls: ['./dialog-edit-user.component.scss']
 })
-export class DialogEditUserComponent {
+export class DialogEditUserComponent  {
   user: User;
   userId: string;
   firestore: Firestore = inject(Firestore);
@@ -20,7 +20,8 @@ export class DialogEditUserComponent {
 
   constructor(
     public crud: CrudServiceService,
-    public dialogRef: MatDialogRef<DialogEditUserComponent>){}
+    public dialogRef: MatDialogRef<DialogEditUserComponent>){
+    }
 
   saveChanges() {
     this.loading = true;

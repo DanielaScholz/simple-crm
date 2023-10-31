@@ -28,6 +28,7 @@ export class UserDetailComponent implements OnInit {
   order: Order = new Order();
   newOrder;
   allOrders: { amount: number; price: number; item: string; }[] = [];
+  indexOfOrder:string;
 
   newNote: string;
   notesList: string[] = [];
@@ -53,7 +54,7 @@ export class UserDetailComponent implements OnInit {
     // })
   }
 
-  getUserData(userId) {
+  getUserData(userId) { 
     let ref = doc(this.firestore, 'users', userId);
     docData(ref).subscribe((userData: any) => {
       console.log(userData);
@@ -61,7 +62,7 @@ export class UserDetailComponent implements OnInit {
       // this.order = new Order(this.user.orders); 
       this.checkIfNotes();     
       this.allOrders = this.user.orders;
-      // this.crud.allOrders = this.user.orders;
+      this.crud.allOrders = this.user.orders;
       this.dateOfBirth = this.user.dateOfBirth
       this.converteDateOfBirth();
     })
@@ -125,10 +126,10 @@ export class UserDetailComponent implements OnInit {
   }
 
   openDialogEditOrder(i) {
-    console.log(i)
     let dialog = this.dialog.open(DialogEditOrderComponent);
-    dialog.componentInstance.user = new User(this.user.orders[i]);
-    dialog.componentInstance.userId = this.userId;
+    dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.componentInstance.order = this.user.orders[i];
+    dialog.componentInstance.userId = this.userId;    
   }
 
   deleteOrder(i:number) {

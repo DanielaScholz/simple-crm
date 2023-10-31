@@ -29,9 +29,11 @@ export class CrudServiceService {
 
   
   getUserById(userId:string) {
-    const userIdRef = doc(this.firestore, 'users', userId);    
+    const userIdRef = doc(this.firestore, 'users', userId);   
     return docData(userIdRef, { idField: 'id' });
-  }
+    }
+
+
 
   async update(userId:string, list:any){
     await updateDoc(this.getSingleDocRef('users', userId), list).catch(

@@ -41,16 +41,16 @@ export class User {
 }
 
 export class Order {
-    public amount: number = 0;
-    public price: number = 0;
-    public item: string = '';
+     amount: number = 0;
+     price: number = 0;
+     item: string = '';
 
 
-    // constructor(obj?: any){
-    //     this.amount = obj? obj.amount : 0;
-    //     this.price = obj? obj.price : 0;
-    //     this.item = obj? obj.item : '';
-    // }
+    constructor(obj?: any){
+        this.amount = obj? obj.amount : 0;
+        this.price = obj? obj.price : 0;
+        this.item = obj? obj.item : '';
+    }
 
     
     public toJSON(){
