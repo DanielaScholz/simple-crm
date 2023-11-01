@@ -1,4 +1,4 @@
-.user-detail-header{
+.user-detail-header {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -8,18 +8,18 @@
     padding: 16px;
 }
 
-.user-deatails-container{
+.user-deatails-container {
     display: flex;
     align-items: center;
 
-    img{
+    img {
         height: 80px;
         width: auto;
         object-fit: cover;
     }
 }
 
-.user-details{
+.user-details {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -27,24 +27,120 @@
     justify-content: center;
     margin-left: 16px;
 
-    h2{
+    h2 {
         margin: 0;
     }
 }
 
-.edit-btn{
+.edit-btn {
     position: absolute;
     top: 0;
     right: 0;
 }
 
-.note-box{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+//NOTES
+
+.notes-table{
+    width: 100%;
+    border-collapse: collapse;
+
+
+    th {
+        text-align: end;
+        color: rgba(0, 0, 0, 0.4);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+        font-weight: 500;
+        padding-right: 21px;
+    }
+
+
+    tr {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+        border-top: 1px solid rgba(0, 0, 0, 0.4);
+
+        &:first-child {
+            border-top: 0;
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+
+    td {
+        height: 48px;
+
+        &:first-child {
+            padding-left: 16px;
+        }
+
+        &:last-child {
+            padding-right: 16px;
+            text-align: end;
+        }
+}
 }
 
+
 // ORDERS
+
+
+.mat-card {
+    padding-top: 16px;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+        text-align: start;
+        color: rgba(0, 0, 0, 0.4);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+        font-weight: 500;
+
+        &:first-child {
+            padding-left: 16px;
+        }
+
+        &:last-child {
+            padding-right: 16px;
+            text-align: center;
+        }
+    }
+
+    tr {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+    td {
+        height: 48px;
+
+        &:first-child {
+            padding-left: 16px;
+        }
+
+        &:last-child {
+            padding-right: 16px;
+            text-align: center;
+        }
+    }
+
+    .aligned-right {
+        text-align: end;
+    }
+
+    .center-text {
+        text-align: center;
+    }
+
+}
 
 .add-order-btn {
     display: flex;
@@ -52,5 +148,3 @@
     margin-right: 12px;
     margin-bottom: 12px;
 }
-
-

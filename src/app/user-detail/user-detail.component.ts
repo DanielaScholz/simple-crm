@@ -8,7 +8,6 @@ import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.co
 import { DialogDeleteUserComponent } from '../dialog-delete-user/dialog-delete-user.component';
 import { DialogAddOrderComponent } from '../dialog-add-order/dialog-add-order.component';
 import { DialogEditOrderComponent } from '../dialog-edit-order/dialog-edit-order.component';
-import { Observable } from 'rxjs';
 import { CrudServiceService } from '../services/crud-service.service';
 
 

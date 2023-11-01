@@ -44,24 +44,29 @@
     <mat-card-title> Orders</mat-card-title>
   </mat-card-header>
 
-  <ul>
-    <li *ngFor="let order of allOrders; let i =index">
-      <div class="note-box">
-        {{ user.orders[i].amount }}
-        {{ user.orders[i].item }}
-        {{ user.orders[i].price }} €
-        {{ user.orders[i].amount * user.orders[i].price }}
-
-
+  <table class="order-table">
+    <tr>
+      <th *ngIf="allOrders.length != 0">Quantity</th>
+      <th *ngIf="allOrders.length != 0">Item</th>
+      <th *ngIf="allOrders.length != 0" class="aligned-right">Price per piece</th>
+      <th *ngIf="allOrders.length != 0" class="aligned-right">Total</th>
+      <th *ngIf="allOrders.length != 0">Action</th>
+    </tr>
+    <tr *ngFor="let order of allOrders; let i = index">
+      <td> {{ user.orders[i].amount }} </td>
+      <td> {{ user.orders[i].item }} </td>
+      <td class="aligned-right"> {{ user.orders[i].price }} € </td>
+      <td class="aligned-right"> {{ user.orders[i].amount * user.orders[i].price}} €</td> 
+      <td> 
         <button (click)="openDialogEditOrder(i)" mat-icon-button color="primary">
           <mat-icon>edit</mat-icon>
         </button>
         <button (click)="deleteOrder(i)" mat-icon-button color="warn">
           <mat-icon>delete</mat-icon>
         </button>
-      </div>
-    </li>
-  </ul>
+      </td>
+    </tr>
+  </table>
 
   <div class="add-order-btn">
     <button mat-mini-fab (click)="openDialogAddOrder()" color="primary">
@@ -71,27 +76,26 @@
   </div>
 </mat-card>
 
-
-
-
-
-
 <!-- NOTES -->
 <mat-card class="mt-32">
   <mat-card-header>
     <mat-card-title> Notes</mat-card-title>
   </mat-card-header>
 
-  <ul>
-    <li *ngFor="let note of notesList; let i =index">
-      <div class="note-box">
-        {{ note }}
+  <table class="notes-table">
+    <tr>
+      <th></th>
+      <th *ngIf="notesList.length != 0">Action</th>
+    </tr>
+    <tr *ngFor="let note of notesList; let i =index">
+      <td> {{ note }} </td>
+      <td>
         <button (click)="deleteNote(i)" mat-icon-button color="warn">
           <mat-icon>delete</mat-icon>
         </button>
-      </div>
-    </li>
-  </ul>
+      </td>
+    </tr>
+  </table>
 
   <mat-form-field>
     <textarea matInput [(ngModel)]="newNote" placeholder="Take notes..."></textarea>

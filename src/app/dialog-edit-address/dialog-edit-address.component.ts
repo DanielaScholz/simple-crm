@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Firestore, collection, doc, updateDoc } from '@angular/fire/firestore';
+import { Firestore } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 import { CrudServiceService } from '../services/crud-service.service';

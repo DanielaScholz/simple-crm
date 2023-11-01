@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Firestore, deleteDoc, doc } from '@angular/fire/firestore';
+import { Firestore} from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { User } from 'src/models/user.class';

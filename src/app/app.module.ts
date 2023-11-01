@@ -33,6 +33,7 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
 import { DialogDeleteUserComponent } from './dialog-delete-user/dialog-delete-user.component';
 import { DialogAddOrderComponent } from './dialog-add-order/dialog-add-order.component';
 import { DialogEditOrderComponent } from './dialog-edit-order/dialog-edit-order.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { DialogEditOrderComponent } from './dialog-edit-order/dialog-edit-order.
     DialogEditUserComponent,
     DialogDeleteUserComponent,
     DialogAddOrderComponent,
-    DialogEditOrderComponent
+    DialogEditOrderComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,

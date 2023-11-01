@@ -1,11 +1,17 @@
 html,
 body {
     height: 100%;
-}
-
-body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.m-0{
+    margin: 0;
 }
 
 .mt-32 {
@@ -14,6 +20,23 @@ body {
 
 .pd-16 {
     padding-right: 16px;
+}
+
+.mat-mdc-card-header{
+    padding: 16px !important;
+}
+
+//Sidenav
+.mat-drawer-inner-container {
+    width: 95% !important;
+    height: 98% !important;
+    background-color: #3f51b5;
+    border-radius: 15px;
+}
+
+//Query-Field at User.compontent
+.mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
+    background: white !important;
 }
 
 .user-form {
@@ -29,3 +52,7 @@ body {
 .button-container {
     padding: 0 24px 20px !important;
 }
+
+
+
+

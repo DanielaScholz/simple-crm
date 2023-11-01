@@ -2,10 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from 'src/models/user.class';
-import { Firestore, collection, doc, collectionData, onSnapshot, updateDoc } from '@angular/fire/firestore';
-import { docData } from 'rxfire/firestore';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ThemePalette } from '@angular/material/core';
+import { Firestore, onSnapshot } from '@angular/fire/firestore';
 import { CrudServiceService } from '../services/crud-service.service';
 
 @Component({
@@ -79,11 +76,11 @@ export class UserComponent implements OnInit {
   }
 
   filterData() {
-    this.filteredUsers = this.users.filter(item => {
+    this.filteredUsers = this.users.filter(input => {
       return (
-        item.firstName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        item.lastName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        item.city.toLowerCase().includes(this.searchQuery.toLowerCase())
+        input.firstName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        input.lastName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        input.city.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     });
 

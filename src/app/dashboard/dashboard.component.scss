@@ -1,0 +1,52 @@
+.card-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .card-container {
+        height: calc(100vh - 68px);
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .big-card{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 65%;
+            margin: 8px;
+        }
+
+        .small-card{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 35%;
+            margin: 8px;
+        }
+
+
+    }
+
+    .highlight-border{
+        border-radius: 10px;
+        border:8px solid rgba($color: #3F51B5, $alpha: 0.4),
+    }
+
+    .highlight-bg{
+        border-radius: 10px;
+        border: 8px solid rgba($color: #3F51B5, $alpha: 0.4),
+    }
+
+
+}
+
+
+.mat-calendar {
+    width: 90%;
+    height: auto;
+  }
+
+
+

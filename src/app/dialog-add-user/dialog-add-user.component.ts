@@ -1,8 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { Firestore } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
-
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { CrudServiceService } from '../services/crud-service.service';
@@ -29,9 +28,6 @@ export class DialogAddUserComponent {
   dateOfBirth: Date;
   minDate: Date;
   maxDate: Date;
-
-
-
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   matcher = new MyErrorStateMatcher();
