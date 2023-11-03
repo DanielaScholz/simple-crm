@@ -30,6 +30,10 @@
     h2 {
         margin: 0;
     }
+
+    mat-icon{
+        margin-right: 8px;
+    }
 }
 
 .edit-btn {
@@ -144,7 +148,7 @@
 
 .add-order-btn {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-right: 12px;
     margin-bottom: 12px;
 }

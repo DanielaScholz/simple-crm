@@ -1,5 +1,5 @@
 <mat-form-field appearance="outline" class="full-width">
-  <input matInput placeholder="Search..."[(ngModel)]="searchQuery" (input)="filterData()">
+  <input  matInput placeholder="Search..."[(ngModel)]="searchQuery" (input)="filterData()">
   <mat-icon matSuffix>search</mat-icon>
 </mat-form-field>
 
@@ -9,11 +9,13 @@
     <tr>
       <th>Name</th>
       <th>E-Mail</th>
+      <th>Phone</th>
       <th>City</th>
     </tr>
     <tr *ngFor="let item of filteredUsers" [routerLink]="['/user/' + item.id]">
       <td> {{ item.firstName }} {{item.lastName}}</td>
       <td>{{ item.eMail }}</td>
+      <td>{{ item.phoneNumber }}</td>
       <td>{{ item.city }}</td>
     </tr>
 

@@ -22,6 +22,12 @@
         <mat-label>E-mail</mat-label>
         <input [disabled]="loading" [(ngModel)]="user.eMail" matInput placeholder="max.mustermann@gmail.com"
           name="eMail">
+      </mat-form-field> 
+
+      <mat-form-field class="full-width">
+        <mat-label>Telephone</mat-label>
+        <input [disabled]="loading" [(ngModel)]="user.phoneNumber" name="phoneNumber" type="tel" matInput placeholder="0664 123 45 67">
+        <mat-icon matSuffix>mode_edit</mat-icon>
       </mat-form-field>
 
       <!-- <mat-form-field class="full-width">

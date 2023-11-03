@@ -12,8 +12,18 @@
     <img src="../../assets/img/user-circle.png" alt="profil-picture">
     <div class="user-details">
       <h2> {{ user.firstName }} {{ user.lastName }}</h2>
-      {{ user.eMail }} <br>
-      {{ dateOfBirth }}
+      <div class="align-center">
+        <mat-icon>mail</mat-icon> 
+        <div>{{ user.eMail }}</div>
+      </div>
+      <div class="align-center">
+        <mat-icon>call</mat-icon> 
+        <div>{{ user.phoneNumber }}</div>
+      </div>
+      <div class="align-center">
+        <mat-icon>cake</mat-icon> 
+        <div>{{ dateOfBirth }}</div>
+      </div>
     </div>
   </div>
 </mat-card>
