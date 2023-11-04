@@ -3,11 +3,11 @@ import { Firestore, collection, deleteDoc, doc, docData, updateDoc } from '@angu
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Order, User } from 'src/models/user.class';
-import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
-import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
-import { DialogDeleteUserComponent } from '../dialog-delete-user/dialog-delete-user.component';
-import { DialogAddOrderComponent } from '../dialog-add-order/dialog-add-order.component';
-import { DialogEditOrderComponent } from '../dialog-edit-order/dialog-edit-order.component';
+import { DialogEditAddressComponent } from '../customer/dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserComponent } from '../customer/dialog-edit-user/dialog-edit-user.component';
+import { DialogDeleteUserComponent } from '../customer/dialog-delete-user/dialog-delete-user.component';
+import { DialogAddOrderComponent } from '../order/dialog-add-order/dialog-add-order.component';
+import { DialogEditOrderComponent } from '../order/dialog-edit-order/dialog-edit-order.component';
 import { CrudServiceService } from '../services/crud-service.service';
 
 

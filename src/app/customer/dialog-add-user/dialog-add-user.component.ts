@@ -4,7 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { CrudServiceService } from '../services/crud-service.service';
+import { CrudServiceService } from '../../services/crud-service.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -52,8 +52,5 @@ export class DialogAddUserComponent {
         this.dialogRef.close();
       })
   }
-
-
-
 
 }

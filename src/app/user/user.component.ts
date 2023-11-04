@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
+import { DialogAddUserComponent } from '../customer/dialog-add-user/dialog-add-user.component';
 import { User } from 'src/models/user.class';
 import { Firestore, onSnapshot } from '@angular/fire/firestore';
 import { CrudServiceService } from '../services/crud-service.service';

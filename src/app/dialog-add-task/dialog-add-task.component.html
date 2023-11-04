@@ -1,0 +1,56 @@
+<div>
+    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
+    <h1 mat-dialog-title>Add task</h1>
+    <div mat-dialog-content>
+
+        <form class="user-form">
+            <mat-form-field class="full-width">
+                <mat-label>Title</mat-label>
+                <input [disabled]="loading" [(ngModel)]="task.title" matInput placeholder="Title of the task"
+                    name="title">
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Due date</mat-label>
+                <input [disabled]="loading" [(ngModel)]="dueDate" matInput [min]="minDate" [matDatepicker]="picker"
+                    name="dueDate">
+                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <table class="full-width">
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill" class="pd-16 width-50">
+                            <mat-label>Priority</mat-label>
+                            <mat-select [(ngModel)]="task.priority" name="priority">
+                                <mat-option *ngFor="let priority of priorityStatus" [value]="priority">
+                                    {{ priority }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" class="width-50">
+                            <mat-label>Status</mat-label>
+                            <mat-select [(ngModel)]="task.status" name="status"  yPosition="above">
+                              <mat-option [value]="task.STATUS_TODO">To do</mat-option>
+                              <mat-option [value]="task.STATUS_PROGRESS">In progress</mat-option>
+                              <mat-option [value]="task.STATUS_FEEDBACK">Feedback</mat-option>
+                              <mat-option [value]="task.STATUS_DONE">Done</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+
+    <div class="button-container" mat-dialog-actions>
+        <button mat-button (click)="dialogRef.close()">Cancel</button>
+        <button mat-button [disabled]="loading" (click)="saveTask()">Save</button>
+    </div>
+
+</div>

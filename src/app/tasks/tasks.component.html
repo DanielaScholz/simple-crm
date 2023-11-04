@@ -1,11 +1,56 @@
 <mat-form-field appearance="outline" class="query-field full-width">
-    <input matInput placeholder="Search...">
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
+  <input matInput placeholder="Search..." [(ngModel)]="searchQuery" (input)="filterData">
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
 
 
+<mat-card>
+  <table class="table-styling">
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Due Date</th>
+      <th>Priority</th>
+      <th>Progress</th>
+      <th>Action</th>
+    </tr>
 
-<button mat-fab (click)="openDialogAddTask()" color="primary" matTooltip="Add user" matTooltipPosition="above"
-  class="add-user-btn">
+    <tr *ngFor="let task of filteredTasks; let i = index">
+      <td>
+        <mat-checkbox></mat-checkbox>
+      </td>
+      <td>{{ task.title }} </td>
+      <td>{{ dueDates[i] }}</td>
+      <td>
+        <span [ngClass]="{
+        'green': task.priority === 'low',
+        'orange': task.priority === 'medium',
+        'red': task.priority === 'high'
+      }">{{ task.priority }}</span>
+      </td>
+      <td>
+        <span [ngClass]="{
+          'red': task.status === 'todo',
+          'yellow': task.status === 'progress',
+          'orange': task.status === 'feedback',
+          'green': task.status === 'done',
+
+        }">{{ task.status }}</span>
+      </td>
+      <td>
+        <button (click)="openDialogEditTask(i)" mat-icon-button color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="deleteTask(i)" mat-icon-button color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+
+  </table>
+</mat-card>
+
+<button mat-fab (click)="openDialogAddTask()" color="primary" matTooltip="Add Task" matTooltipPosition="above"
+  class="add-btn">
   <mat-icon>add</mat-icon>
 </button>

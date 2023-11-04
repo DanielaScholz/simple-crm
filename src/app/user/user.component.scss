@@ -2,7 +2,7 @@
     background: white !important;
 }
 
-.add-user-btn {
+.add-btn {
     position: absolute;
     right: 56px;
     bottom: 56px;
@@ -12,57 +12,54 @@
     padding-top: 16px;
 }
 
-.user-table {
-    width: 100%;
-    border-collapse: collapse;
+// .table-styling {
+//     width: 100%;
+//     border-collapse: collapse;
 
+//     th {
+//         text-align: start;
+//         color: rgba(0, 0, 0, 0.4);
+//         border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+//         font-weight: 500;
 
-    th {
-        text-align: start;
-        color: rgba(0, 0, 0, 0.4);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-        font-weight: 500;
+//         &:first-child{
+//             padding-left: 16px;
+//         }
 
-        &:first-child{
-            padding-left: 16px;
-        }
+//         &:last-child{
+//             padding-right: 16px;
+//         }
+//     }
 
-        &:last-child{
-            padding-right: 16px;
-        }
+//     tr {
+//         border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 
+//         &:first-child {
+//             cursor: unset;
+//             &:hover{
+//                 background-color: unset;
+//             }        }
 
-    }
+//         &:last-child {
+//             border-bottom: 0;
+//         }
 
-    tr {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+//         cursor: pointer;
 
-        &:first-child {
-            cursor: unset;
-            &:hover{
-                background-color: unset;
-            }        }
+//         &:hover {
+//             background-color: rgba(0, 0, 0, .12);
+//         }
+//     }
 
-        &:last-child {
-            border-bottom: 0;
-        }
+//     td {
+//         height: 48px;
 
-        cursor: pointer;
+//         &:first-child{
+//             padding-left: 16px;
+//         }
 
-        &:hover {
-            background-color: rgba(0, 0, 0, .12);
-        }
-    }
-
-    td {
-        height: 48px;
-
-        &:first-child{
-            padding-left: 16px;
-        }
-
-        &:last-child{
-            padding-right: 16px;
-        }
-    }
-}
+//         &:last-child{
+//             padding-right: 16px;
+//         }
+//     }
+// }

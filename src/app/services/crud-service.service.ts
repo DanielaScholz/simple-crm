@@ -23,6 +23,10 @@ export class CrudServiceService {
     return collection(this.firestore, 'users');
   }
 
+  getTaskRef(){
+    return collection(this.firestore, 'tasks');
+  }
+
   getSingleDocRef(collId: string, userId: string) {
     return (doc(collection(this.firestore, collId), userId));
   }
@@ -34,17 +38,30 @@ export class CrudServiceService {
     }
 
 
-
+  //UPDATE
   async update(userId:string, list:any){
     await updateDoc(this.getSingleDocRef('users', userId), list).catch(
       (err) => { console.log(err); }
       );
   }
 
-  async save(json){
-    await addDoc(this.getUserRef(), json)
+  async updateTask(id:string, list:any){
+    await updateDoc(this.getSingleDocRef('tasks', id), list).catch(
+      (err) => { console.log(err); }
+      );
   }
 
+  //SAVE
+  async save(json){
+    await addDoc(this.getUserRef(), json);
+  }
+
+  async saveTask(json){
+    await addDoc(this.getTaskRef(), json);
+  }
+
+
+  //DELETE
   async deleteUser(userId:string){
     await deleteDoc(doc(this.firestore, 'users', userId))
   }

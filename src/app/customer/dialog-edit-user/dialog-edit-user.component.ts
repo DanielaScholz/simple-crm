@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
-import { CrudServiceService } from '../services/crud-service.service';
+import { CrudServiceService } from '../../services/crud-service.service';
 
 
 @Component({

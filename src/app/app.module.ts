@@ -18,22 +18,25 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {ErrorStateMatcher, MAT_DATE_LOCALE, MatNativeDateModule, ShowOnDirtyErrorStateMatcher} from '@angular/material/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCardModule} from '@angular/material/card';
-
+import { MatListModule } from '@angular/material/list';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserComponent } from './user/user.component';
-import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
+import { DialogAddUserComponent } from './customer/dialog-add-user/dialog-add-user.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import {MatMenuModule} from '@angular/material/menu';
-import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
-import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
-import { DialogDeleteUserComponent } from './dialog-delete-user/dialog-delete-user.component';
-import { DialogAddOrderComponent } from './dialog-add-order/dialog-add-order.component';
-import { DialogEditOrderComponent } from './dialog-edit-order/dialog-edit-order.component';
+import { DialogEditAddressComponent } from './customer/dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserComponent } from './customer/dialog-edit-user/dialog-edit-user.component';
+import { DialogDeleteUserComponent } from './customer/dialog-delete-user/dialog-delete-user.component';
+import { DialogAddOrderComponent } from './order/dialog-add-order/dialog-add-order.component';
+import { DialogEditOrderComponent } from './order/dialog-edit-order/dialog-edit-order.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { DialogAddTaskComponent } from './dialog-add-task/dialog-add-task.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,8 @@ import { TasksComponent } from './tasks/tasks.component';
     DialogDeleteUserComponent,
     DialogAddOrderComponent,
     DialogEditOrderComponent,
-    TasksComponent
+    TasksComponent,
+    DialogAddTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +73,10 @@ import { TasksComponent } from './tasks/tasks.component';
 
     ReactiveFormsModule,
     MatMenuModule,
+
+    MatListModule,
+    MatSelectModule,
+    MatCheckboxModule,
 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
