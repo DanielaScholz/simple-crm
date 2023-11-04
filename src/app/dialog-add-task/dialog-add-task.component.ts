@@ -27,7 +27,7 @@ export class DialogAddTaskComponent {
   dueDate: Date;
   minDate: Date;
 
-  priorityStatus = ['low', 'middle', 'high'];
+  priorityStatus = ['low', 'medium', 'high'];
   // statusValue = ['todo', 'progress', 'feedback', 'done'];
 
   constructor(
@@ -42,14 +42,11 @@ export class DialogAddTaskComponent {
 
   saveTask() {
     this.task.dueDate = this.dueDate.getTime();
-    console.log(this.task.dueDate)
     this.loading = true;
-    console.log(this.task.toJSON());
     this.crud.saveTask(this.task.toJSON())
       .then(() => {
         this.loading = false;
         this.dialogRef.close();
       })
-
   }
 }

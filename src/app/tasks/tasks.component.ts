@@ -1,20 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { MatRadioModule } from '@angular/material/radio';
-import { FormsModule } from '@angular/forms';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatCardModule } from '@angular/material/card';
-
-import { NgFor } from '@angular/common';
-import { MatListModule } from '@angular/material/list';
-import { MatFormFieldModule } from '@angular/material/form-field';
-
-
-
 import { Task } from 'src/models/task.class';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
-import { Firestore, onSnapshot } from '@angular/fire/firestore';
+import { Firestore, collection, deleteDoc, doc, onSnapshot } from '@angular/fire/firestore';
 import { CrudServiceService } from '../services/crud-service.service';
+import { DialogEditTaskComponent } from '../dialog-edit-task/dialog-edit-task.component';
 
 @Component({
   selector: 'app-tasks',
@@ -59,42 +49,26 @@ export class TasksComponent implements OnInit {
       this.dueDates = []
 
       list.forEach(element => {
-        // const taskData = { ...element.data(), id: element.id };
-        const taskData = element.data();
+        console.log(element)
+        const taskData = { ...element.data(), idField: element.id };
         this.tasks.push(taskData);
         this.filteredTasks.push(taskData);
       });
-
-
-      // this.converteDueDate();
-
-      console.log(this.tasks);
-      this.getDatum()
+      this.converteDueDate()
     })
-
-
   }
 
-  getDatum() {
+  converteDueDate() {
     this.filteredTasks.forEach(element => {
       let datum;
-      let timestamp = new Date (element.dueDate);
-      console.log(timestamp);
+      let timestamp = new Date(element.dueDate);
       let day = timestamp.getDate();
       let month = timestamp.getMonth() + 1;
       let year = timestamp.getFullYear();
       datum = `${day}.${month}.${year}`;
-      console.log(datum);
-      
       this.dueDates.push(datum)
     });
-    console.log(this.dueDates);
   }
-
-  openDialogAddTask() {
-    this.dialog.open(DialogAddTaskComponent);
-  }
-
 
   filterData() {
     this.filteredTasks = this.tasks.filter(input => {
@@ -102,31 +76,22 @@ export class TasksComponent implements OnInit {
         input.title.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     });
-
   }
 
-
-  getPriorityClass(priority: string): string {
-    switch (priority) {
-      case 'low':
-        return 'low';
-      case 'medium':
-        return 'medium';
-      case 'high':
-        return 'high';
-      default:
-        return '';
-    }
+  openDialogAddTask() {
+    this.dialog.open(DialogAddTaskComponent);
   }
 
-
-  openDialogEditTask(i){
-
+  openDialogEditTask(i:number) {
+    let dialog = this.dialog.open(DialogEditTaskComponent);
+    dialog.componentInstance.task = new Task(this.tasks[i]);
+    dialog.componentInstance.id = this.tasks[i].idField;
   }
 
-  deleteTask(i){
-
+  deleteTask(i: number) {
+    deleteDoc(doc(this.firestore, 'tasks', this.tasks[i].idField));
   }
+
 
 
 }

@@ -11,21 +11,13 @@ export class Task {
   public STATUS_FEEDBACK = 'feedback';
   public STATUS_DONE = 'done';
 
-    constructor() {
-        // Standardmäßig sind alle Werte auf false gesetzt
-        // this.priority = {
-        //   low: false,
-        //   middle: false,
-        //   high: false
-        // };
-        // this.status ={
-        //     todo: false,
-        //     progress: false,
-        //     feedback: false,
-        //     done: false
-        //   };
-
+  constructor(obj?: any){
+    this.title = obj? obj.title : '';
+    this.dueDate = obj? obj.dueDate : '';
+    this.priority = obj? obj.priority : '';
+    this.status = obj? obj.status : '';
 }
+
 
 public toJSON(){
     // const priorityString = this.getPriorityString();

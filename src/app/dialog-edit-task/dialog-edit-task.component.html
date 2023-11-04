@@ -1,7 +1,7 @@
 <div>
     <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
 
-    <h1 mat-dialog-title>Add task</h1>
+    <h1 mat-dialog-title>Edit task</h1>
     <div mat-dialog-content>
 
         <form class="dialog-form">
@@ -50,7 +50,7 @@
 
     <div class="button-container" mat-dialog-actions>
         <button mat-button (click)="dialogRef.close()">Cancel</button>
-        <button mat-button [disabled]="loading" (click)="saveTask()">Save</button>
+        <button mat-button [disabled]="loading" (click)="updateTask()">Save</button>
     </div>
 
 </div>

@@ -37,6 +37,7 @@ import { DialogAddOrderComponent } from './order/dialog-add-order/dialog-add-ord
 import { DialogEditOrderComponent } from './order/dialog-edit-order/dialog-edit-order.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { DialogAddTaskComponent } from './dialog-add-task/dialog-add-task.component';
+import { DialogEditTaskComponent } from './dialog-edit-task/dialog-edit-task.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { DialogAddTaskComponent } from './dialog-add-task/dialog-add-task.compon
     DialogAddOrderComponent,
     DialogEditOrderComponent,
     TasksComponent,
-    DialogAddTaskComponent
+    DialogAddTaskComponent,
+    DialogEditTaskComponent
   ],
   imports: [
     BrowserModule,
