@@ -15,15 +15,14 @@ import { DialogEditTaskComponent } from '../dialog-edit-task/dialog-edit-task.co
 export class TasksComponent implements OnInit {
   firestore: Firestore = inject(Firestore);
   task: Task = new Task();
-  tasks = [];
+  tasks= [];
+
   dueDates = [];
   filteredTasks = [];
   unsubTask;
 
-  checked = false;
   searchQuery: string;
   dueDate;
-
 
 
   constructor(
@@ -34,8 +33,6 @@ export class TasksComponent implements OnInit {
 
   ngOnInit(): void {
     this.unsubTask = this.subTaskList();
-
-
   }
 
   ngOnDestroy() {
@@ -52,6 +49,7 @@ export class TasksComponent implements OnInit {
         console.log(element)
         const taskData = { ...element.data(), idField: element.id };
         this.tasks.push(taskData);
+        this.crud.allTasks = this.tasks;
         this.filteredTasks.push(taskData);
       });
       this.converteDueDate()
@@ -78,11 +76,15 @@ export class TasksComponent implements OnInit {
     });
   }
 
+  updateCheckboxValue($event:any, i:number) {
+    this.crud.updateTask(this.tasks[i].idField, { checked: $event.checked})
+  }
+
   openDialogAddTask() {
     this.dialog.open(DialogAddTaskComponent);
   }
 
-  openDialogEditTask(i:number) {
+  openDialogEditTask(i: number) {
     let dialog = this.dialog.open(DialogEditTaskComponent);
     dialog.componentInstance.task = new Task(this.tasks[i]);
     dialog.componentInstance.id = this.tasks[i].idField;
@@ -91,7 +93,4 @@ export class TasksComponent implements OnInit {
   deleteTask(i: number) {
     deleteDoc(doc(this.firestore, 'tasks', this.tasks[i].idField));
   }
-
-
-
 }

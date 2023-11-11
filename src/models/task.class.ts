@@ -1,4 +1,5 @@
 export class Task {
+    checked: boolean;
     title: string;
     dueDate: any;
     priority: string;
@@ -12,6 +13,7 @@ export class Task {
   public STATUS_DONE = 'done';
 
   constructor(obj?: any){
+    this.checked = obj? obj.checked : false;
     this.title = obj? obj.title : '';
     this.dueDate = obj? obj.dueDate : '';
     this.priority = obj? obj.priority : '';
@@ -23,6 +25,7 @@ public toJSON(){
     // const priorityString = this.getPriorityString();
     // const statusString = this.getStatusString();
     return{
+        checked: this.checked,
         title: this.title,
         dueDate: this.dueDate,
         priority: this.priority,

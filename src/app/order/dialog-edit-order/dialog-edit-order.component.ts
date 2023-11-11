@@ -36,8 +36,4 @@ export class DialogEditOrderComponent implements OnInit {
       })
   }
 
-  closeDialog() {
-    this.dialogRef.close();
-  }
-
 }

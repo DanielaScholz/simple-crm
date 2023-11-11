@@ -10,43 +10,139 @@
         flex-direction: column;
         justify-content: space-between;
 
-        .big-card{
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        table {
+            border-collapse: collapse;
+            margin-right: 16px;
+            margin-left: 16px;
+
+            th {
+                text-align: start;
+                color: rgba(0, 0, 0, 0.4);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+                font-weight: 500;
+            }
+
+            tr {
+                border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+
+                &:last-child {
+                    border-bottom: 0;
+                }
+            }
+        }
+
+        .big-card {
             height: 65%;
             margin: 8px;
+
+            .note-textarea {
+                outline: none;
+                border: none;
+                font-family: Roboto, sans-serif;
+                padding: 16px 16px 0 16px;
+                margin-bottom: 16px;
+            }
+
+            .note-card {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: lightyellow;
+                margin: 0 16px 16px 16px;
+                border-radius: 10px;
+                font-family: Roboto, sans-serif;
+                padding: 6px;
+                border: none;
+
+                mat-icon {
+                    cursor: pointer;
+                }
+
+                &:focus {
+                    outline: none;
+                }
+
+                &::placeholder {
+                    color: black;
+                }
+            }
         }
 
-        .small-card{
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .small-card {
             height: 35%;
             margin: 8px;
+            background-color: #cccfff;
+
+            .sales-container {
+                display: flex;
+                justify-content: center;
+
+                .currency {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 50px;
+                    width: 50px;
+                    font-size: 30px;
+                    font-weight: 500;
+                    border-radius: 50%;
+                    margin-right: 16px;
+                    background-color: #FF4081;
+                    color: white;
+                }
+
+                .total-sales {
+                    font-size: 30px;
+                    font-weight: bold;
+                    padding-top: 16px;
+                }
+            }
+
+            // .mail-table {
+            //     tr {
+            //         border: none;
+            //         width: 100%;
+
+            //         button[mat-icon-button] {
+
+            //             &.small-icon-btn {
+            //                 width: 33px;
+            //                 height: 33px;
+            //                 padding: 6px;
+
+            //                 .mat-icon {
+            //                     height: 20px;
+            //                     width: 20px;
+            //                     font-size: 18px;
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
         }
 
-
+        .greeting{
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 500;
+            
+            span{
+                font-weight: 800;
+                padding-top: 6px;
+                color:#FF4081
+            }
+        }
     }
 
-    .highlight-border{
+    .calender {
+        display: flex;
+        justify-content: center;
+        margin: 8px;
+        height: calc(100vh - 82px);
         border-radius: 10px;
-        border:8px solid rgba($color: #3F51B5, $alpha: 0.4),
+        border: 10px solid #a1a5ff;
+        background-color: white;
+
     }
-
-    .highlight-bg{
-        border-radius: 10px;
-        border: 8px solid rgba($color: #3F51B5, $alpha: 0.4),
-    }
-
-
 }
-
-
-.mat-calendar {
-    width: 90%;
-    height: auto;
-  }
-
-
-

@@ -38,6 +38,8 @@ import { DialogEditOrderComponent } from './order/dialog-edit-order/dialog-edit-
 import { TasksComponent } from './tasks/tasks.component';
 import { DialogAddTaskComponent } from './dialog-add-task/dialog-add-task.component';
 import { DialogEditTaskComponent } from './dialog-edit-task/dialog-edit-task.component';
+import { ImprintComponent } from './imprint/imprint.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { DialogEditTaskComponent } from './dialog-edit-task/dialog-edit-task.com
     DialogEditOrderComponent,
     TasksComponent,
     DialogAddTaskComponent,
-    DialogEditTaskComponent
+    DialogEditTaskComponent,
+    ImprintComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,
