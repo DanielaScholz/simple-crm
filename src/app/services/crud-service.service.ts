@@ -16,11 +16,9 @@ export class CrudServiceService {
   allOrders: { amount: number; price: number; item: string; }[] = [];
   allTasks: Task[] = [];
 
+  constructor(public route: ActivatedRoute) { }
 
-
-  constructor(public route: ActivatedRoute) {}
-
-  getRef(coll:string){
+  getRef(coll: string) {
     return collection(this.firestore, coll)
   }
 
@@ -28,60 +26,60 @@ export class CrudServiceService {
     return collection(this.firestore, 'users');
   }
 
-  getTaskRef(){
+  getTaskRef() {
     return collection(this.firestore, 'tasks');
   }
 
-  getNoteRef(){
-    return collection (this.firestore, 'notes');
+  getNoteRef() {
+    return collection(this.firestore, 'notes');
   }
 
   getSingleDocRef(collId: string, userId: string) {
     return (doc(collection(this.firestore, collId), userId));
   }
 
-  
-  getUserById(userId:string) {
-    const userIdRef = doc(this.firestore, 'users', userId);   
+
+  getUserById(userId: string) {
+    const userIdRef = doc(this.firestore, 'users', userId);
     return docData(userIdRef, { idField: 'id' });
-    }
+  }
 
 
   //UPDATE
-  async update(userId:string, list:any){
+  async update(userId: string, list: any) {
     await updateDoc(this.getSingleDocRef('users', userId), list).catch(
       (err) => { console.log(err); }
-      );
+    );
   }
 
-  async updateTask(id:string, list:any){
+  async updateTask(id: string, list: any) {
     await updateDoc(this.getSingleDocRef('tasks', id), list).catch(
       (err) => { console.log(err); }
-      );
+    );
   }
 
-  async updateNote(id: string, list:any){
+  async updateNote(id: string, list: any) {
     await updateDoc(this.getSingleDocRef('notes', id), list).catch(
       (err) => { console.log(err); }
-      );
-    }
+    );
+  }
 
   //SAVE
-  async save(json){
+  async save(json) {
     await addDoc(this.getUserRef(), json);
   }
 
-  async saveTask(json){
+  async saveTask(json) {
     await addDoc(this.getTaskRef(), json);
   }
 
-  async saveNote(json){
-    await addDoc(this.getNoteRef(),json)
+  async saveNote(json) {
+    await addDoc(this.getNoteRef(), json)
   }
 
 
   //DELETE
-  async deleteUser(userId:string){
+  async deleteUser(userId: string) {
     await deleteDoc(doc(this.firestore, 'users', userId))
   }
 

@@ -28,6 +28,10 @@ export class DashboardComponent implements OnInit {
   // unsubNote;
 
 
+  apiURL ="https://zenquotes.io/api/quotes/";
+
+
+
   constructor(
     public crud: CrudServiceService) { }
 
@@ -35,6 +39,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.unsubTask = this.subTaskList();
     this.unsubUser = this.subUserList();
+    // this.getapi(this.apiURL);
     // this.unsubNote = this.subNoteList();
   }
 
@@ -110,6 +115,18 @@ export class DashboardComponent implements OnInit {
   updateCheckboxValue($event: any, i: number) {
     this.crud.updateTask(this.allTasks[i].idField, { checked: $event.checked })
   }
+
+
+  //API
+
+
+// async getapi(url)
+// {
+//   const response = await fetch(url);
+//   var data = await response.json();
+//   console.log('api',data);
+// }
+
 
 
   //Note-Widget

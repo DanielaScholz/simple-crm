@@ -19,6 +19,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class LoginComponent {
 
   hide = true;
+  name:string = '';
   matcher = new MyErrorStateMatcher();
 
   loginForm: FormGroup = new FormGroup({

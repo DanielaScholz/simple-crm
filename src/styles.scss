@@ -58,7 +58,7 @@ body {
 }
 
 
-//TABLE
+//TABLE-STYLING
 
 .table-styling {
     width: 100%;
@@ -110,4 +110,29 @@ body {
             padding-right: 16px;
         }
     }
+}
+
+//Login/Register,Verify,Forgot-password STYLING
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    mat-card-header{
+        justify-content: center;
+        color: white;
+    }
+
+    .card {
+        width: 300px;
+        text-align: center;
+        background-color: rgba(0,0,0,0);
+        box-shadow: none;
+    }    
+}
+
+.link-styling{
+    text-decoration: none;
+    color: white;
 }
