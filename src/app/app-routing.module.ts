@@ -6,9 +6,14 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { ImprintComponent } from './imprint/imprint.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent},
+  // {path: '', component: DashboardComponent},
+  {path: '', redirectTo:'login', pathMatch:'full'},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'user', component: UserComponent},
   {path: 'user/:id', component: UserDetailComponent},

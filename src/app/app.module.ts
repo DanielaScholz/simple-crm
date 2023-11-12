@@ -40,6 +40,12 @@ import { DialogAddTaskComponent } from './dialog-add-task/dialog-add-task.compon
 import { DialogEditTaskComponent } from './dialog-edit-task/dialog-edit-task.component';
 import { ImprintComponent } from './imprint/imprint.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -57,7 +63,9 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
     DialogAddTaskComponent,
     DialogEditTaskComponent,
     ImprintComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -84,11 +92,20 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
     MatSelectModule,
     MatCheckboxModule,
 
+
+    AngularFireModule,
+    AngularFireAuthModule,
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    
+
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
 
   ],
   providers: [
+    { provide: AUTH_SETTINGS, useValue: { appVerificationDisabledForTesting: true } },
     // {provide: MAT_DATE_LOCALE, useValue: 'de-DE'},
     // {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ],
