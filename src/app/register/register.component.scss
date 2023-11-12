@@ -1,14 +1,10 @@
-.login-wrapper {
+.wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
 
-    .login-card {
-        // background-color: #fff;
-        // padding: 20px;
-        // border-radius: 8px;
-        // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .register-card {
         width: 300px;
         text-align: center;
     }

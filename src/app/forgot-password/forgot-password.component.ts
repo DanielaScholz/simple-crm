@@ -12,26 +12,24 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.scss']
 })
-export class LoginComponent {
+export class ForgotPasswordComponent {
 
   hide = true;
   matcher = new MyErrorStateMatcher();
 
-  loginForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+  forgotPwForm: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email])
   });
 
   constructor(private auth: AuthService, private router: Router) { }
 
-
-  login() {
-    const { email, password } = this.loginForm.value;
-    this.auth.login(email, password);
+  forgotPassword() {
+    const {email} = this.forgotPwForm.value;
+    this.auth.forgotPassword(email);
   }
 
 }

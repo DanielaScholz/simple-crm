@@ -46,6 +46,8 @@ import { RegisterComponent } from './register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/compat/auth';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VarifyEmailComponent } from './varify-email/varify-email.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/compat/auth';
     ImprintComponent,
     PrivacyPolicyComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ForgotPasswordComponent,
+    VarifyEmailComponent
   ],
   imports: [
     BrowserModule,
