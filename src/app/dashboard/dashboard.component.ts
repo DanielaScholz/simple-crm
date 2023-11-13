@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   allTasks = [];
   dueDates = [];
   countries = [];
-  totalSales: number = 0;
+  totalSales: number;
 
   newNote;
   notesList = [];
@@ -82,13 +82,15 @@ export class DashboardComponent implements OnInit {
 
 
   getSales() {
+    this.totalSales = 0;
     this.allOrders.forEach(array => {
       if (array.length > 0) {
         array.forEach(obj => {
           let price = obj.price;
           let amount = obj.amount;
-          let total = price * amount;
-          this.totalSales += total;
+          // let total = price * amount;
+          this.totalSales += price *amount;
+          // this.totalSales = this.totalSales + total;
         })
       }
     });
