@@ -1,5 +1,6 @@
 <div class="wrapper">
     <mat-card class="card">
+        <div class="err-msg" *ngIf="auth.errorMsg"> {{auth.errorMsg}}</div>
         <mat-card-header>
             <mat-card-title>Register</mat-card-title>
         </mat-card-header>

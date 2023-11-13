@@ -27,7 +27,7 @@ export class RegisterComponent {
     name: new FormControl('', [Validators.required])
   });
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(public auth: AuthService, private router: Router) { }
 
   register() {
     const { email, password, name } = this.registerForm.value;

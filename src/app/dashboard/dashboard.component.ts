@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
   // unsubNote;
 
 
-  name: string ='';
+  name: string;
 
 
   constructor(
@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.unsubTask = this.subTaskList();
     this.unsubUser = this.subUserList();
-    this.getName();
+    this.getName();    
     // this.unsubNote = this.subNoteList();
   }
 
@@ -118,7 +118,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getName(){
-   this.name = this.auth.name;
+   this.name = localStorage.getItem('name');
   }
 
 

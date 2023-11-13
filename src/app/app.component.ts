@@ -20,6 +20,7 @@ export class AppComponent {
 
   logout() {
     this.auth.logout();
+    localStorage.removeItem('name');
   }
 }
 
