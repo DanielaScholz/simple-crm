@@ -6,12 +6,14 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+  name: string;
 
   constructor(private fireauth: AngularFireAuth, private router: Router) { }
 
   //Login-method
   login(email: string, password: string) {
     this.fireauth.signInWithEmailAndPassword(email, password).then(res => {
+      this.name = res.user.displayName;
       localStorage.setItem('token', 'true');
       this.router.navigate(['dashboard']);
       if (res.user?.emailVerified == true) {
@@ -26,14 +28,16 @@ export class AuthService {
   }
 
   //Register-method
-  register(email: string, password: string) {
-    this.fireauth.createUserWithEmailAndPassword(email, password).then((res:any) => {
+  register(email: string, password: string, name: string) {
+    this.fireauth.createUserWithEmailAndPassword(email, password).then((res: any) => {
       alert('Registration successful');
-      console.log(res.user);
       this.sendEmailForVerification(res.user);
+      res.user.updateProfile({
+        displayName: name
+      })
       // this.router.navigate(['/login']);
     }, err => {
-      alert(err.message);
+      alert(err.message); 
       this.router.navigate(['/register']);
     })
   }

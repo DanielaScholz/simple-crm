@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CrudServiceService } from '../services/crud-service.service';
 import { Task } from 'src/models/task.class';
 import { Firestore, doc, docData, addDoc, collection, onSnapshot, setDoc } from '@angular/fire/firestore';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,18 +29,18 @@ export class DashboardComponent implements OnInit {
   // unsubNote;
 
 
-  apiURL ="https://zenquotes.io/api/quotes/";
-
+  name: string ='';
 
 
   constructor(
-    public crud: CrudServiceService) { }
+    public crud: CrudServiceService,
+    public auth: AuthService) {}
 
 
   ngOnInit(): void {
     this.unsubTask = this.subTaskList();
     this.unsubUser = this.subUserList();
-    // this.getapi(this.apiURL);
+    this.getName();
     // this.unsubNote = this.subNoteList();
   }
 
@@ -116,17 +117,9 @@ export class DashboardComponent implements OnInit {
     this.crud.updateTask(this.allTasks[i].idField, { checked: $event.checked })
   }
 
-
-  //API
-
-
-// async getapi(url)
-// {
-//   const response = await fetch(url);
-//   var data = await response.json();
-//   console.log('api',data);
-// }
-
+  getName(){
+   this.name = this.auth.name;
+  }
 
 
   //Note-Widget

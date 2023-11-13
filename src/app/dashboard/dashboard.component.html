@@ -2,7 +2,7 @@
     <div class="card-container">
 
         <mat-card class="small-card greeting">
-            Welcome back, <br><span color="#FF4081">DANIELA</span>
+            Welcome back, <br><span color="#FF4081">{{ name }}</span>
         </mat-card>
 
         <mat-card class="big-card">
@@ -43,10 +43,6 @@
         </mat-card>
 
         <mat-card class="big-card">
-            <!-- <mat-card-header>
-                <mat-card-title>My notes</mat-card-title>
-            </mat-card-header> -->
-
             <mat-card-header>
                 <mat-card-title>Send mail</mat-card-title>
             </mat-card-header>
@@ -77,13 +73,6 @@
 
     <div class="card-container calender">
         <mat-calendar [(selected)]="selected"></mat-calendar>
-
-
-<!-- 
-        <mat-card class="calender-card demo-inline-calendar-card">
-        </mat-card> -->
-
-
     </div>
 
 </div>

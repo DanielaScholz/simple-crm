@@ -24,13 +24,14 @@ export class RegisterComponent {
   registerForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    name: new FormControl('', [Validators.required])
   });
 
   constructor(private auth: AuthService, private router: Router) { }
 
   register() {
-    const { email, password } = this.registerForm.value;
-    this.auth.register(email, password);
+    const { email, password, name } = this.registerForm.value;
+    this.auth.register(email, password, name);
   }
 
 }

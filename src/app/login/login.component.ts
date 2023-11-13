@@ -19,7 +19,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class LoginComponent {
 
   hide = true;
-  name:string = '';
+  name:string;
   matcher = new MyErrorStateMatcher();
 
   loginForm: FormGroup = new FormGroup({
@@ -32,6 +32,7 @@ export class LoginComponent {
 
   login() {
     const { email, password } = this.loginForm.value;
+    this.name = this.auth.name;
     this.auth.login(email, password);
   }
 
