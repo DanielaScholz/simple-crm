@@ -47,6 +47,7 @@
 .notes-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 
     th {
         text-align: end;
@@ -71,6 +72,7 @@
 
     td {
         height: 48px;
+        word-break: break-word;
 
         &:first-child {
             padding-left: 16px;
@@ -91,6 +93,7 @@
 .order-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 
     th {
         text-align: start;
@@ -118,6 +121,7 @@
 
     td {
         height: 48px;
+        word-break: break-word;
 
         &:first-child {
             padding-left: 16px;

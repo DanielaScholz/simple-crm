@@ -91,3 +91,38 @@
         background-color: white;
     }
 }
+
+@media screen and (min-width: 290px) {
+    .card-wrapper {
+        flex-direction: column;
+        width: calc(100vw - 10px); // -10px because of the width of the scroll-bar
+
+        .calender{
+            margin: 0;
+            border-radius: 0;
+        }
+
+        .card-container{
+            height: inherit;
+            min-height: fit-content;
+            width: calc(100vw - 10px); // -10px because of the width of the scroll-bar
+
+
+            .big-card, .small-card{
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .small-card{
+                min-height: 150px;
+            }
+
+            .big-card{
+                min-height: 200px;
+                height: fit-content;
+            }
+        }
+
+    }
+}
