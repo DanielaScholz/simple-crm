@@ -4,9 +4,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 import { CrudServiceService } from '../../services/crud-service.service';
 
-
-
-
 @Component({
   selector: 'app-dialog-add-user',
   templateUrl: './dialog-add-user.component.html',
@@ -22,8 +19,6 @@ export class DialogAddUserComponent {
   minDate: Date;
   maxDate: Date;
 
-
-
   constructor(
     public dialogRef: MatDialogRef<DialogAddUserComponent>,
     public crud: CrudServiceService) {
@@ -34,6 +29,7 @@ export class DialogAddUserComponent {
     this.maxDate = new Date(currentYear, currentMonth - 1, currentDay);
   }
 
+  
    saveUser() {
     this.user.dateOfBirth = this.dateOfBirth.getTime();
     this.loading = true;

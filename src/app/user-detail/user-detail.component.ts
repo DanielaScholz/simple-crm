@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Firestore, collection, deleteDoc, doc, docData, updateDoc } from '@angular/fire/firestore';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Firestore, collection, doc, docData } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { Order, User } from 'src/models/user.class';
 import { DialogEditAddressComponent } from '../customer/dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from '../customer/dialog-edit-user/dialog-edit-user.component';
@@ -19,12 +19,11 @@ import { CrudServiceService } from '../services/crud-service.service';
 
 export class UserDetailComponent implements OnInit {
   firestore: Firestore = inject(Firestore);
-
   userId: string;
   dateOfBirth;
   user: User = new User();
-
   order: Order = new Order();
+  
   newOrder;
   allOrders: { amount: number; price: number; item: string; }[] = [];
   indexOfOrder:string;
@@ -32,26 +31,20 @@ export class UserDetailComponent implements OnInit {
   newNote: string;
   notesList: string[] = [];
 
-
-
   constructor(
     public route: ActivatedRoute,
     public crud: CrudServiceService,
     public dialog: MatDialog) {
   }
 
+
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap) => {
-      console.log(paramMap)
       this.userId = paramMap.get('id');
       this.getUserData(this.userId);
     })
-
-    // this.route.params.subscribe((params) =>{
-    //   this.userId = params['id'];
-    //   this.getUserData(this.userId);
-    // })
   }
+
 
   getUserData(userId) { 
     let ref = doc(this.firestore, 'users', userId);
@@ -67,15 +60,13 @@ export class UserDetailComponent implements OnInit {
     })
   }
 
+
   checkIfNotes(){
     if (this.user.notes.length >= 1) {
       this.notesList = this.user.notes;
     }
   }
 
-  getSingleDocRef(colId: string, docId: string) {
-    return (doc(collection(this.firestore, colId), docId));
-  }
 
   editUserDetail() {
     let dialog = this.dialog.open(DialogEditUserComponent);
@@ -107,7 +98,7 @@ export class UserDetailComponent implements OnInit {
   addNote() {
     if (this.newNote.trim() !== '') {
       this.notesList.push(this.newNote);
-      this.newNote = ''; // Das Eingabefeld leeren
+      this.newNote = '';
       this.crud.update(this.userId, {notes: this.notesList})
     }
   }

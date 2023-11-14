@@ -10,18 +10,20 @@ import { CrudServiceService } from '../../services/crud-service.service';
   templateUrl: './dialog-edit-user.component.html',
   styleUrls: ['./dialog-edit-user.component.scss']
 })
-export class DialogEditUserComponent  {
+
+export class DialogEditUserComponent {
   user: User;
   userId: string;
   firestore: Firestore = inject(Firestore);
 
-  loading= false;
+  loading = false;
   dateOfBirth: Date;
 
   constructor(
     public crud: CrudServiceService,
-    public dialogRef: MatDialogRef<DialogEditUserComponent>){
-    }
+    public dialogRef: MatDialogRef<DialogEditUserComponent>) {
+  }
+
 
   saveChanges() {
     this.loading = true;

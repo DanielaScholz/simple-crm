@@ -15,12 +15,12 @@ export class DialogDeleteUserComponent {
   user: User = new User();
   firestore: Firestore = inject(Firestore);
 
-
   constructor(
     public crud: CrudServiceService,
     public dialogRef: MatDialogRef<DialogDeleteUserComponent>,
     private router: Router) { }
 
+    
   deleteUser() {
     this.crud.deleteUser(this.userId)
       .then(() => {

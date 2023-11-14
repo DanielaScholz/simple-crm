@@ -1,6 +1,6 @@
-* {
-    box-sizing: border-box;
-}
+// * {
+//     box-sizing: border-box;
+// }
 
 .mat-drawer-container {
     height: 100vh;
@@ -90,7 +90,7 @@
     display: none !important;
 }
 
+//login/register/verify/password-forgot background
 .bg-purple {
-    background: rgb(120, 135, 221);
     background: linear-gradient(0deg, rgba(120, 135, 221, 0.6728816526610644) 0%, rgba(63, 81, 181, 1) 100%);
 }

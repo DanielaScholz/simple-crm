@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
@@ -27,7 +26,7 @@ export class RegisterComponent {
     name: new FormControl('', [Validators.required])
   });
 
-  constructor(public auth: AuthService, private router: Router) { }
+  constructor(public auth: AuthService) {}
 
   register() {
     const { email, password, name } = this.registerForm.value;

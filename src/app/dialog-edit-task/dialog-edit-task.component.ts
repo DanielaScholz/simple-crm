@@ -8,6 +8,7 @@ import { CrudServiceService } from '../services/crud-service.service';
   templateUrl: './dialog-edit-task.component.html',
   styleUrls: ['./dialog-edit-task.component.scss']
 })
+
 export class DialogEditTaskComponent {
   loading = false;
   task: Task;
@@ -15,8 +16,6 @@ export class DialogEditTaskComponent {
   priorityStatus = ['low', 'medium', 'high'];
   dueDate: Date;
   minDate: Date;
-
-
 
   constructor(
     public crud: CrudServiceService,
@@ -26,10 +25,9 @@ export class DialogEditTaskComponent {
   updateTask() {
     this.loading = true;
     this.crud.updateTask(this.id, this.task.toJSON())
-    .then(() => {
-      this.loading = false;
-      this.dialogRef.close();
-    })
-
+      .then(() => {
+        this.loading = false;
+        this.dialogRef.close();
+      })
   }
 }

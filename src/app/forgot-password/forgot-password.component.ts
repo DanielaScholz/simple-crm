@@ -16,8 +16,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss']
 })
-export class ForgotPasswordComponent {
 
+export class ForgotPasswordComponent {
   hide = true;
   matcher = new MyErrorStateMatcher();
 
@@ -27,8 +27,9 @@ export class ForgotPasswordComponent {
 
   constructor(private auth: AuthService, private router: Router) { }
 
+
   forgotPassword() {
-    const {email} = this.forgotPwForm.value;
+    const { email } = this.forgotPwForm.value;
     this.auth.forgotPassword(email);
   }
 

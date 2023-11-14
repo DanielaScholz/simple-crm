@@ -29,7 +29,7 @@ export class AuthService {
     })
   }
 
-  //Register-method
+  //register-method
   // register(email: string, password: string, name: string) {
   //   this.fireauth.createUserWithEmailAndPassword(email, password).then((res: any) => {
   //     alert('Registration successful');
@@ -68,7 +68,7 @@ export class AuthService {
   }
   
 
-  //E-mail varification methode
+  //e-mail verification-methode
   sendEmailForVerification(user: any) {
     user.sendEmailVerification().then((res: any) => {
       this.router.navigate(['varify-email']);
@@ -77,7 +77,7 @@ export class AuthService {
     })
   }
 
-  //Logout-method
+  //logout-method
   logout() {
     this.fireauth.signOut().then(() => {
       localStorage.removeItem('token');
@@ -87,7 +87,7 @@ export class AuthService {
     })
   }
 
-  //Send-link methode
+  //send-link-methode
   forgotPassword(email: string) {
     this.fireauth.sendPasswordResetEmail(email).then(() => {
       this.router.navigate(['/varify-email']);

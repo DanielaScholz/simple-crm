@@ -12,22 +12,16 @@ import { AuthService } from '../services/auth.service';
 export class DashboardComponent implements OnInit {
   firestore: Firestore = inject(Firestore);
   task: Task = new Task;
-  selected: Date | null;
+  selected: Date | null; //select Date on calender-widget
   users = [];
   allOrders = [];
   allTasks = [];
   dueDates = [];
-  countries = [];
+  // countries = [];
   totalSales: number;
-
-  newNote;
-  notesList = [];
-
 
   unsubTask;
   unsubUser;
-  // unsubNote;
-
 
   name: string;
 
@@ -40,14 +34,12 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.unsubTask = this.subTaskList();
     this.unsubUser = this.subUserList();
-    this.getName();    
-    // this.unsubNote = this.subNoteList();
+    this.getLoginName();    
   }
 
   ngOnDestroy() {
     this.unsubTask();
     this.unsubUser();
-    // this.unsubNote();
   }
 
 
@@ -68,12 +60,12 @@ export class DashboardComponent implements OnInit {
     return onSnapshot(this.crud.getUserRef(), (list) => {
       this.users = [];
       this.allOrders = [];
-      this.countries = [];
+      // this.countries = [];
 
       list.forEach((element) => {
         const userData = { ...element.data(), idField: element.id };
         this.users.push(userData);
-        this.checkIfTwiceCountries(this.countries, userData['country']);
+        // this.checkIfTwiceCountries(this.countries, userData['country']);
         this.allOrders.push(userData['orders']);
       })
       this.getSales()
@@ -88,13 +80,12 @@ export class DashboardComponent implements OnInit {
         array.forEach(obj => {
           let price = obj.price;
           let amount = obj.amount;
-          // let total = price * amount;
           this.totalSales += price *amount;
-          // this.totalSales = this.totalSales + total;
         })
       }
     });
   }
+
 
   converteDueDate() {
     this.allTasks.forEach(element => {
@@ -109,45 +100,20 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  checkIfTwiceCountries(array: string[], value: string) {
-    if (array.indexOf(value) === -1) {
-      array.push(value);
-    }
-  }
-
   updateCheckboxValue($event: any, i: number) {
     this.crud.updateTask(this.allTasks[i].idField, { checked: $event.checked })
   }
 
-  getName(){
+
+  getLoginName(){
    this.name = localStorage.getItem('name');
   }
+  
 
-
-  //Note-Widget
-  // saveNote() {
-  //   if (this.newNote.trim() !== '') {
-  //     this.notesList.push(this.newNote);
-  //     this.newNote = '';
-  //     this.crud.updateNote('noteOne', { note: this.notesList });  
+  // checkIfTwiceCountries(array: string[], value: string) {
+  //   if (array.indexOf(value) === -1) {
+  //     array.push(value);
   //   }
-  // }
-
-  // deleteNote(i: number) {
-  //   this.notesList.splice(i, 1);
-  //   this.crud.updateNote('noteOne', { note: this.notesList });
-
-  // }
-
-
-  // subNoteList() {
-  //   let ref = doc(this.firestore, 'notes', 'noteOne');
-  //   docData(ref).subscribe((list: any) => {
-  //     console.log(list);
-
-  //     this.notesList = list.note;
-
-  //   })
   // }
 
 }

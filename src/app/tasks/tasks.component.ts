@@ -24,7 +24,6 @@ export class TasksComponent implements OnInit {
   searchQuery: string;
   dueDate;
 
-
   constructor(
     public crud: CrudServiceService,
     public dialog: MatDialog) {
@@ -35,9 +34,11 @@ export class TasksComponent implements OnInit {
     this.unsubTask = this.subTaskList();
   }
 
+
   ngOnDestroy() {
     this.unsubTask;
   }
+
 
   subTaskList() {
     return onSnapshot(this.crud.getTaskRef(), (list) => {
@@ -46,7 +47,6 @@ export class TasksComponent implements OnInit {
       this.dueDates = []
 
       list.forEach(element => {
-        console.log(element)
         const taskData = { ...element.data(), idField: element.id };
         this.tasks.push(taskData);
         this.crud.allTasks = this.tasks;
@@ -68,6 +68,7 @@ export class TasksComponent implements OnInit {
     });
   }
 
+
   filterData() {
     this.filteredTasks = this.tasks.filter(input => {
       return (
@@ -76,13 +77,16 @@ export class TasksComponent implements OnInit {
     });
   }
 
+
   updateCheckboxValue($event:any, i:number) {
     this.crud.updateTask(this.tasks[i].idField, { checked: $event.checked})
   }
 
+
   openDialogAddTask() {
     this.dialog.open(DialogAddTaskComponent);
   }
+
 
   openDialogEditTask(i: number) {
     let dialog = this.dialog.open(DialogEditTaskComponent);
@@ -90,6 +94,7 @@ export class TasksComponent implements OnInit {
     dialog.componentInstance.id = this.tasks[i].idField;
   }
 
+  
   deleteTask(i: number) {
     deleteDoc(doc(this.firestore, 'tasks', this.tasks[i].idField));
   }

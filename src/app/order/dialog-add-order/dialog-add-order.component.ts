@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Firestore, addDoc, collection, doc, docData, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
+import { Firestore } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Order, User } from 'src/models/user.class';
 import { CrudServiceService } from '../../services/crud-service.service';
@@ -9,8 +9,8 @@ import { CrudServiceService } from '../../services/crud-service.service';
   templateUrl: './dialog-add-order.component.html',
   styleUrls: ['./dialog-add-order.component.scss']
 })
-export class DialogAddOrderComponent implements OnInit {
 
+export class DialogAddOrderComponent implements OnInit {
   loading = false;
   userId: string;
   user: User = new User();
@@ -19,17 +19,15 @@ export class DialogAddOrderComponent implements OnInit {
 
   allOrders: { amount: number; price: number; item: string; }[] = [];
 
-
-
   constructor(
     public crud: CrudServiceService,
     public dialogRef: MatDialogRef<DialogAddOrderComponent>) {
   }
 
-
   ngOnInit(): void {
     this.getUserById();
   }
+
 
   getUserById() {
     const userArr = this.crud.getUserById(this.userId)
@@ -54,5 +52,5 @@ export class DialogAddOrderComponent implements OnInit {
         this.dialogRef.close();
       })
   }
-
+  
 }

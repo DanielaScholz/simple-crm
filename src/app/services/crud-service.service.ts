@@ -38,14 +38,13 @@ export class CrudServiceService {
     return (doc(collection(this.firestore, collId), userId));
   }
 
-
   getUserById(userId: string) {
     const userIdRef = doc(this.firestore, 'users', userId);
     return docData(userIdRef, { idField: 'id' });
   }
 
 
-  //UPDATE
+  //UPDATE-methode
   async update(userId: string, list: any) {
     await updateDoc(this.getSingleDocRef('users', userId), list).catch(
       (err) => { console.log(err); }
@@ -64,7 +63,7 @@ export class CrudServiceService {
     );
   }
 
-  //SAVE
+  //SAVE-methode
   async save(json) {
     await addDoc(this.getUserRef(), json);
   }
@@ -77,8 +76,7 @@ export class CrudServiceService {
     await addDoc(this.getNoteRef(), json)
   }
 
-
-  //DELETE
+  //DELETE-methode
   async deleteUser(userId: string) {
     await deleteDoc(doc(this.firestore, 'users', userId))
   }

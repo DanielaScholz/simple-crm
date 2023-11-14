@@ -10,60 +10,28 @@
         flex-direction: column;
         justify-content: space-between;
 
-        table {
-            border-collapse: collapse;
-            margin-right: 16px;
-            margin-left: 16px;
-
-            th {
-                text-align: start;
-                color: rgba(0, 0, 0, 0.4);
-                border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-                font-weight: 500;
-            }
-
-            tr {
-                border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-
-                &:last-child {
-                    border-bottom: 0;
-                }
-            }
-        }
-
         .big-card {
             height: 65%;
             margin: 8px;
 
-            .note-textarea {
-                outline: none;
-                border: none;
-                font-family: Roboto, sans-serif;
-                padding: 16px 16px 0 16px;
-                margin-bottom: 16px;
-            }
-
-            .note-card {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                background-color: lightyellow;
-                margin: 0 16px 16px 16px;
-                border-radius: 10px;
-                font-family: Roboto, sans-serif;
-                padding: 6px;
-                border: none;
-
-                mat-icon {
-                    cursor: pointer;
+            table {
+                border-collapse: collapse;
+                margin-right: 16px;
+                margin-left: 16px;
+    
+                th {
+                    text-align: start;
+                    color: rgba(0, 0, 0, 0.4);
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+                    font-weight: 500;
                 }
-
-                &:focus {
-                    outline: none;
-                }
-
-                &::placeholder {
-                    color: black;
+    
+                tr {
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    
+                    &:last-child {
+                        border-bottom: 0;
+                    }
                 }
             }
         }
@@ -97,28 +65,6 @@
                     padding-top: 16px;
                 }
             }
-
-            // .mail-table {
-            //     tr {
-            //         border: none;
-            //         width: 100%;
-
-            //         button[mat-icon-button] {
-
-            //             &.small-icon-btn {
-            //                 width: 33px;
-            //                 height: 33px;
-            //                 padding: 6px;
-
-            //                 .mat-icon {
-            //                     height: 20px;
-            //                     width: 20px;
-            //                     font-size: 18px;
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
         }
 
         .greeting{
@@ -143,6 +89,5 @@
         border-radius: 10px;
         border: 10px solid #a1a5ff;
         background-color: white;
-
     }
 }

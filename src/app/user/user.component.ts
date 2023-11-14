@@ -12,44 +12,22 @@ import { CrudServiceService } from '../services/crud-service.service';
 })
 export class UserComponent implements OnInit {
   user = new User();
-  // allUsers$;
-  // allUser;
-
   users = [];
   filteredUsers = [];
   unsubUser;
   firestore: Firestore = inject(Firestore);
   searchQuery: string;
 
-
-
   constructor(
     public dialog: MatDialog,
     public crud: CrudServiceService) { }
 
-  // this.allUsers$ = collectionData(this.getUserRef());
-  // this.allUser = this.allUsers$.subscribe((list) => {
-  //   this.users = [];
-  //   list.forEach((element) => {
-  //     const userData = { ...element.data(), id: element.id };
-  //     this.users.push(userData);
-  //     console.log(this.users);
-  //     console.log('User ist:', element);
-  //   });
-  // })
 
   ngOnInit(): void {
     this.unsubUser = this.subUserList();
-
-    // this.allUsers$ = collectionData(this.coll);
-    // console.log(this.allUsers$);
-    // this.allUsers$.subscribe((data) => {
-    //   console.log('data of observable', data);
-    // })
   }
 
   ngOnDestroy() {
-    //this.allUser.unsubscribe();
     this.unsubUser();
   }
 
@@ -57,23 +35,19 @@ export class UserComponent implements OnInit {
     return onSnapshot(this.crud.getUserRef(), (list) => {
       this.users = [];
       this.filteredUsers = [];
-
       list.forEach((element) => {
         const userData = { ...element.data(), id: element.id };
-        console.log(userData);
-
         this.users.push(userData);
         this.filteredUsers.push(userData);
-        // console.log(element);
-        // console.log(element.id);
-        // console.log(element.data());
       })
     })
   }
 
+
   openDialogAddUser() {
     this.dialog.open(DialogAddUserComponent);
   }
+
 
   filterData() {
     this.filteredUsers = this.users.filter(input => {
@@ -83,13 +57,6 @@ export class UserComponent implements OnInit {
         input.city.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     });
-
-
-
-
-
   }
-
-
 
 }

@@ -1,25 +1,20 @@
 <div>
     <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
-
     <h1 mat-dialog-title>Add task</h1>
     <div mat-dialog-content>
-
         <form class="dialog-form">
             <mat-form-field class="full-width">
                 <mat-label>Title</mat-label>
                 <input [disabled]="loading" [(ngModel)]="task.title" matInput placeholder="Title of the task"
                     name="title">
             </mat-form-field>
-
             <mat-form-field class="full-width">
                 <mat-label>Due date</mat-label>
                 <input [disabled]="loading" [(ngModel)]="dueDate" matInput [min]="minDate" [matDatepicker]="picker"
                     name="dueDate">
-                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-
             <table class="full-width">
                 <tr>
                     <td>
@@ -31,7 +26,6 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
-
                         <mat-form-field appearance="fill" class="width-50">
                             <mat-label>Status</mat-label>
                             <mat-select [(ngModel)]="task.status" name="status"  yPosition="above">
@@ -43,7 +37,6 @@
                           </mat-form-field>
                     </td>
                 </tr>
-
             </table>
         </form>
     </div>

@@ -12,7 +12,7 @@ import { CrudServiceService } from '../../services/crud-service.service';
 export class DialogEditOrderComponent implements OnInit {
   loading = false;
   userId: string;
-  user: User; 
+  user: User;
   order: Order;
   firestore: Firestore = inject(Firestore);
 
@@ -21,15 +21,17 @@ export class DialogEditOrderComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogEditOrderComponent>,
     public crud: CrudServiceService
-    ) { }
+  ) { }
+
 
   ngOnInit(): void {
     this.allOrders = this.user.orders;
   }
 
-  updateOrder(){
+
+  updateOrder() {
     this.loading = true;
-    this.crud.update(this.userId, {orders: this.allOrders })
+    this.crud.update(this.userId, { orders: this.allOrders })
       .then(() => {
         this.loading = false;
         this.dialogRef.close();

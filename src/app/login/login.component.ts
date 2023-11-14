@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { AuthService } from '../services/auth.service';
@@ -16,8 +15,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
 
+export class LoginComponent {
   hide = true;
   matcher = new MyErrorStateMatcher();
 
@@ -26,12 +25,11 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
-  constructor(public auth: AuthService, private router: Router) { }
+  constructor(public auth: AuthService) { }
 
 
   login() {
     const { email, password } = this.loginForm.value;
-    // this.name = this.auth.name;
     this.auth.login(email, password);
   }
 

@@ -12,7 +12,6 @@ import { VarifyEmailComponent } from './varify-email/varify-email.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
-  // {path: '', component: DashboardComponent},
   {path: '', redirectTo:'login', pathMatch:'full'},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
