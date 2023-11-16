@@ -1,8 +1,12 @@
 <div class="wrapper">
     <mat-card class="card">
+        <div>
+            <img class="logo-container" src="../../assets/img/big-logo-white.png" alt="">
+        </div>
         <div class="err-msg" *ngIf="auth.errorMsg"> {{auth.errorMsg}}</div>
         <mat-card-header>
-            <mat-card-title>Login</mat-card-title>
+            <mat-card-title>LOGIN</mat-card-title>
+            <mat-card-subtitle class="font-white">TO CONTINUE</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">

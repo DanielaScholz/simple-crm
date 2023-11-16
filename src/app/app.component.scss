@@ -25,6 +25,13 @@
     background-color: #f5f5f5;
 }
 
+.sidenav-mobile {
+    width: unset;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+
+}
+
 .logo-container {
     display: flex;
     align-items: center;
@@ -74,18 +81,29 @@
     }
 }
 
+.menu-container-mobile {
+    li {
+        justify-content: center;
+    }
+
+    mat-icon {
+        margin-right: 0 !important;
+    }
+}
+
 .header {
-    position: fixed;
+    // position: fixed;
     z-index: 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 67px 0 57px;
     background-color: #f5f5f5;
     color: #3f51b5;
 }
 
 .router-container {
-    padding: 64px 57px 0px 57px;
+    padding: 0px 57px 0px 57px;
 }
 
 .hide-drawer {
@@ -94,11 +112,21 @@
 
 //login/register/verify/password-forgot background
 .bg-purple {
-    background: linear-gradient(0deg, rgba(120, 135, 221, 0.6728816526610644) 0%, rgba(63, 81, 181, 1) 100%);
+    background: linear-gradient(52deg, rgba(255, 255, 255, 1) 0%, rgba(63, 81, 181, 1) 100%);
 }
 
-@media screen and (min-width: 290px) {
+@media screen and (max-width: 425px) {
     .router-container {
-        padding: 64px 0px 0px 0px;
+        padding: 0 10px 0px 10px;
     }
+
+    .header {
+        padding: 0 10px 0 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    // .router-container {
+    //     padding: 64px 0px 0px 0px;
+    // }
 }

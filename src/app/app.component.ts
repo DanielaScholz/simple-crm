@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 
@@ -7,10 +7,15 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'simple-crm';
+  isMobileView: boolean = false;
 
   constructor(private router: Router, private auth: AuthService) { }
+
+  ngOnInit() {
+    this.checkScreenSize();
+  }
 
   checkIfEntryRoutes(): boolean {
     const currentRoute = this.router.url;
@@ -22,5 +27,15 @@ export class AppComponent {
     this.auth.logout();
     localStorage.removeItem('name');
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isMobileView = window.innerWidth < 768;
+  }
 }
+
 

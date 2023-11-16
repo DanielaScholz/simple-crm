@@ -11,3 +11,10 @@
 .mat-card {
     padding-top: 16px;
 }
+
+
+@media screen and (max-width: 425px) {
+    .table-styling td:last-of-type, th:last-of-type {
+        display: none;
+    }
+}

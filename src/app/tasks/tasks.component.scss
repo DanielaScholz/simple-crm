@@ -29,3 +29,10 @@
     right: 56px;
     bottom: 56px;
 }
+
+@media screen and (max-width: 425px) {
+    .add-btn {
+        right: 20px;
+        bottom: 20px;
+    }
+}

@@ -3,7 +3,6 @@ body {
     height: 100%;
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-
 }
 
 * {
@@ -34,6 +33,15 @@ body {
     display: flex;
     align-items: center;
 }
+
+.font-white{
+    color: white;
+}
+
+.word-break{
+    word-break: break-word;
+}
+
 
 //Sidenav
 .mat-drawer-inner-container {
@@ -73,7 +81,6 @@ body {
 
 
 //TABLE-STYLING
-
 .table-styling {
     width: 100%;
     border-collapse: collapse;
