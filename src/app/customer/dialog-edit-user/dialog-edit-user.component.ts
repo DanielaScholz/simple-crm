@@ -26,6 +26,7 @@ export class DialogEditUserComponent {
 
 
   saveChanges() {
+    this.user.dateOfBirth = this.dateOfBirth.getTime();
     this.loading = true;
     this.crud.update(this.userId, this.user.toJSON())
       .then(() => {

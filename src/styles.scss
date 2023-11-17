@@ -57,6 +57,21 @@ body {
     width: 100%;
 }
 
+@media screen and (max-width: 630px) {
+    .dialog-form > table{
+        display: flex;
+        flex-direction: column;
+
+        td{
+            display: contents;
+
+            mat-form-field{
+                width: 100%;
+            }
+        }
+    }
+}
+
 .full-width {
     width: 100%;
 }
@@ -208,3 +223,4 @@ mat-error {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+

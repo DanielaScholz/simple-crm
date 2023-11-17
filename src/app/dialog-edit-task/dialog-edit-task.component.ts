@@ -23,6 +23,7 @@ export class DialogEditTaskComponent {
 
 
   updateTask() {
+    this.task.dueDate = this.dueDate.getTime();
     this.loading = true;
     this.crud.updateTask(this.id, this.task.toJSON())
       .then(() => {
