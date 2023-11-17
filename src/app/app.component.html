@@ -1,3 +1,4 @@
+<!-- DESKTOP NAVIGATION -->
 <mat-drawer-container class="mat-drawer-container" autosize *ngIf="!isMobileView">
   <mat-drawer #drawer class="sidenav" mode="side" [opened]="false" [ngClass]="{'hide-drawer': checkIfEntryRoutes()}">
     <div class="logo-container">
@@ -18,16 +19,12 @@
     </ul>
   </mat-drawer>
 
-  <!-- <mat-drawer-container class="mat-drawer-container mobile" autosize *ngIf="isMobileView"> -->
   <div>
     <mat-toolbar class="header" color="primary" [ngClass]="{'hide-drawer': checkIfEntryRoutes()}">
       <div>
         <mat-icon class="mat-menu" (click)="drawer.toggle()">menu</mat-icon>
         <span></span>
       </div>
-      <!-- <div>
-        <button mat-raised-button type="button" color="primary" (click)="logout()">Logout</button>
-      </div> -->
     </mat-toolbar>
     <div class="router-container" [ngClass]="{'bg-purple': checkIfEntryRoutes()}">
       <router-outlet></router-outlet>
@@ -35,7 +32,7 @@
   </div>
 </mat-drawer-container>
 
-
+<!-- MOBILE NAVIGATION -->
 <mat-drawer-container class="mat-drawer-container" autosize *ngIf="isMobileView">
   <mat-drawer #mobileDrawer class="sidenav sidenav-mobile" mode="over" [opened]="false"
     [ngClass]="{'hide-drawer': checkIfEntryRoutes()}">
@@ -63,9 +60,6 @@
         <mat-icon class="mat-menu" (click)="mobileDrawer.toggle()">menu</mat-icon>
         <span></span>
       </div>
-      <!-- <div>
-      <button mat-raised-button type="button" color="primary" (click)="logout()">Logout</button>
-    </div> -->
     </mat-toolbar>
     <div class="router-container" [ngClass]="{'bg-purple': checkIfEntryRoutes()}">
       <router-outlet></router-outlet>

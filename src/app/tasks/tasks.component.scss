@@ -1,7 +1,7 @@
 .priority-hl{
     padding:5px;
     border-radius: 10px;
-    color: white
+    color: white;
 }
 
 .green{
@@ -12,11 +12,13 @@
 .orange{
     @extend .priority-hl;
     background-color: #FD612C;
+
 }
 
 .red{
     @extend .priority-hl;
     background-color: #E8384F;
+
 }
 
 .yellow{
@@ -28,6 +30,10 @@
     position: absolute;
     right: 56px;
     bottom: 56px;
+}
+
+.center-text{
+    text-align: center;
 }
 
 @media screen and (max-width: 425px) {

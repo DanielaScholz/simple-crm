@@ -5,49 +5,51 @@
 
 
 <mat-card>
-  <table class="table-styling">
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Due Date</th>
-      <th>Priority</th>
-      <th>Progress</th>
-      <th>Action</th>
-    </tr>
+  <div style="overflow-x:auto;">
+    <table class="table-styling" style="width: -webkit-fill-available;">
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th class="center-text">Due Date</th>
+        <th class="center-text">Priority</th>
+        <th class="center-text">Progress</th>
+        <th class="center-text">Action</th>
+      </tr>
 
-    <tr *ngFor="let task of filteredTasks; let i = index">
-      <td>
-        <mat-checkbox [(ngModel)]="task.checked" (change)="updateCheckboxValue($event, i)"></mat-checkbox>
-      </td>
-      <td>{{ task.title }} </td>
-      <td>{{ dueDates[i] }}</td>
-      <td>
-        <span [ngClass]="{
+      <tr *ngFor="let task of filteredTasks; let i = index">
+        <td>
+          <mat-checkbox [(ngModel)]="task.checked" (change)="updateCheckboxValue($event, i)"></mat-checkbox>
+        </td>
+        <td>{{ task.title }} </td>
+        <td class="center-text">{{ dueDates[i] }}</td>
+        <td class="center-text">
+          <span [ngClass]="{
         'green': task.priority === 'low',
         'orange': task.priority === 'medium',
         'red': task.priority === 'high'
       }">{{ task.priority }}</span>
-      </td>
-      <td>
-        <span [ngClass]="{
+        </td>
+        <td class="center-text">
+          <span [ngClass]="{
           'red': task.status === 'todo',
           'yellow': task.status === 'progress',
           'orange': task.status === 'feedback',
           'green': task.status === 'done',
 
         }">{{ task.status }}</span>
-      </td>
-      <td>
-        <button (click)="openDialogEditTask(i)" mat-icon-button color="primary">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button (click)="deleteTask(i)" mat-icon-button color="warn">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </td>
-    </tr>
+        </td>
+        <td class="center-text">
+          <button (click)="openDialogEditTask(i)" mat-icon-button color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)="deleteTask(i)" mat-icon-button color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
 
-  </table>
+    </table>
+  </div>
 </mat-card>
 
 <button mat-fab (click)="openDialogAddTask()" color="primary" matTooltip="Add Task" matTooltipPosition="above"
