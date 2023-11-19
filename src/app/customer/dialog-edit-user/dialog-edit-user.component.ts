@@ -24,7 +24,6 @@ export class DialogEditUserComponent {
     public dialogRef: MatDialogRef<DialogEditUserComponent>) {
   }
 
-
   saveChanges() {
     this.user.dateOfBirth = this.dateOfBirth.getTime();
     this.loading = true;

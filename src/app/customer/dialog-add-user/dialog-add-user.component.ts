@@ -31,7 +31,11 @@ export class DialogAddUserComponent {
 
   
    saveUser() {
+    console.log(this.dateOfBirth);    
     this.user.dateOfBirth = this.dateOfBirth.getTime();
+    console.log(this.user.dateOfBirth);
+    console.log(new Date(this.user.dateOfBirth));
+    
     this.loading = true;
     this.crud.save(this.user.toJSON())
       .then(() => {

@@ -49,7 +49,6 @@ export class UserDetailComponent implements OnInit {
   getUserData(userId) { 
     let ref = doc(this.firestore, 'users', userId);
     docData(ref).subscribe((userData: any) => {
-      console.log(userData);
       this.user = new User(userData);
       // this.order = new Order(this.user.orders); 
       this.checkIfNotes();     
@@ -69,11 +68,10 @@ export class UserDetailComponent implements OnInit {
 
 
   editUserDetail() {
-    console.log(this.user.toJSON());
-    
     let dialog = this.dialog.open(DialogEditUserComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
     dialog.componentInstance.userId = this.userId;
+    dialog.componentInstance.dateOfBirth = new Date(this.user.dateOfBirth);
   }
 
   editAddressDetail() {

@@ -92,6 +92,8 @@ export class TasksComponent implements OnInit {
     let dialog = this.dialog.open(DialogEditTaskComponent);
     dialog.componentInstance.task = new Task(this.tasks[i]);
     dialog.componentInstance.id = this.tasks[i].idField;
+    dialog.componentInstance.dueDate = new Date(this.tasks[i].dueDate);
+
   }
 
   
