@@ -64,26 +64,3 @@ export class Order {
         }
     }
 }
-
-
-// export class Order {
-//     amount: number = 0;
-//     price: number = ;
-//     item: string = '';
-
-//     constructor(obj?: any) {
-//         if (obj) {
-//             this.amount = obj.amount || 0;
-//             this.price = obj.price || 0;
-//             this.item = obj.item || '';
-//         }
-//     }
-
-//     public toJSON() {
-//         return {
-//             amount: this.amount,
-//             price: this.price,
-//             item: this.item,
-//         };
-//     }
-// }

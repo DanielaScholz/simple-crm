@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { VarifyEmailComponent } from './varify-email/varify-email.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'login', pathMatch:'full'},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'user', component: UserComponent},
   {path: 'user/:id', component: UserDetailComponent},
   {path: 'tasks', component: TasksComponent},
+  {path: 'calendar', component: CalendarComponent},
   {path: 'imprint', component: ImprintComponent},
   {path: 'privacypolicy', component: PrivacyPolicyComponent},
 ];
