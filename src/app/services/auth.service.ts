@@ -29,28 +29,21 @@ export class AuthService {
     })
   }
 
+
+  //guest-login-method
+  guestLogin(name: string) {
+    this.name = name;
+    localStorage.setItem('token', 'true');
+    localStorage.setItem('name', name);
+    this.router.navigate(['dashboard']);
+  }
+
+
   //register-method
-  // register(email: string, password: string, name: string) {
-  //   this.fireauth.createUserWithEmailAndPassword(email, password).then((res: any) => {
-  //     alert('Registration successful');
-  //     this.sendEmailForVerification(res.user);
-  //     res.user.updateProfile({
-  //       displayName: name
-  //     })
-  //     console.log(res.user.displayName);
-      
-  //     // this.router.navigate(['/login']);
-  //   }, err => {
-  //     alert(err.message); 
-  //     this.router.navigate(['/register']);
-  //   })
-  // }
-
-
   register(email: string, password: string, name: string) {
     this.fireauth.createUserWithEmailAndPassword(email, password).then((res: any) => {
       this.sendEmailForVerification(res.user); //send user verfication e-mail
-  
+
       // sets the login-name during register process
       res.user.updateProfile({
         displayName: name
@@ -66,7 +59,7 @@ export class AuthService {
       this.router.navigate(['/register']);
     });
   }
-  
+
 
   //e-mail verification-methode
   sendEmailForVerification(user: any) {

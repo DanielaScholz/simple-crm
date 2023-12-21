@@ -111,15 +111,12 @@ import { CalendarComponent } from './calendar/calendar.component';
 
     FullCalendarModule,
     
-
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
 
   ],
   providers: [
     { provide: AUTH_SETTINGS, useValue: { appVerificationDisabledForTesting: true } },
-    // {provide: MAT_DATE_LOCALE, useValue: 'de-DE'},
-    // {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ],
   bootstrap: [AppComponent]
 })

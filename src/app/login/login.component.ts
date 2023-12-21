@@ -29,8 +29,14 @@ export class LoginComponent {
 
 
   login() {
+    console.log('guest login 1234');
+    
     const { email, password } = this.loginForm.value;
     this.auth.login(email, password);
+  }
+
+  guestLogin(name: string) {
+    this.auth.guestLogin(name)
   }
 
 }
