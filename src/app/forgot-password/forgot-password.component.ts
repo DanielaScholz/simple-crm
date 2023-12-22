@@ -32,5 +32,4 @@ export class ForgotPasswordComponent {
     const { email } = this.forgotPwForm.value;
     this.auth.forgotPassword(email);
   }
-
 }

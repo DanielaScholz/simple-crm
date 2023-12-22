@@ -18,17 +18,17 @@
                 border-collapse: collapse;
                 margin-right: 16px;
                 margin-left: 16px;
-    
+
                 th {
                     text-align: start;
                     color: rgba(0, 0, 0, 0.4);
                     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
                     font-weight: 500;
                 }
-    
+
                 tr {
                     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-    
+
                     &:last-child {
                         border-bottom: 0;
                     }
@@ -67,16 +67,16 @@
             }
         }
 
-        .greeting{
+        .greeting {
             justify-content: center;
             align-items: center;
             font-size: 20px;
             font-weight: 500;
-            
-            span{
+
+            span {
                 font-weight: 800;
                 padding-top: 6px;
-                color:#FF4081
+                color: #FF4081
             }
         }
     }
@@ -96,19 +96,27 @@
     .card-wrapper {
         flex-wrap: wrap;
 
-        .card-container{
+        .card-container {
             height: inherit;
             min-height: fit-content;
             width: calc(100vw - 10px); // -10px because of the width of the scroll-bar
 
-            .small-card{
+            .small-card {
                 min-height: 150px;
             }
 
-            .big-card{
+            .big-card {
                 min-height: 200px;
                 height: fit-content;
             }
         }
+    }
+}
+
+@media screen and (max-width: 425px) {
+
+    .small-card,
+    .big-card {
+        margin: 0;
     }
 }

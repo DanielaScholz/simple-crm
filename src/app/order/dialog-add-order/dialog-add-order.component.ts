@@ -24,6 +24,7 @@ export class DialogAddOrderComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogAddOrderComponent>) {
   }
 
+
   ngOnInit(): void {
     this.getUserById();
   }
@@ -32,9 +33,7 @@ export class DialogAddOrderComponent implements OnInit {
   getUserById() {
     const userArr = this.crud.getUserById(this.userId)
     userArr.subscribe((user) => {
-      console.log(user);
       this.user = new User(user);
-      // (this.user.orders);
     })
   }
 
@@ -52,5 +51,4 @@ export class DialogAddOrderComponent implements OnInit {
         this.dialogRef.close();
       })
   }
-  
 }

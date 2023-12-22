@@ -56,6 +56,7 @@ export class TasksComponent implements OnInit {
     })
   }
 
+  
   converteDueDate() {
     this.filteredTasks.forEach(element => {
       let datum;

@@ -44,7 +44,6 @@ export class CalendarComponent implements OnInit {
     return onSnapshot(this.crud.getTaskRef(), (list) => {
       const events = [];
       list.forEach(element => {
-        const taskData = { ...element.data(), idField: element.id };
         const taskTitle = element.data()['title'];
         const taskPriority = this.checkPriority(element.data()['priority']);
         const taskDate = this.converteTaskDate(element.data()['dueDate']);
@@ -82,9 +81,6 @@ export class CalendarComponent implements OnInit {
   }
 
   handleDateClick(arg: any) {
-    // console.log(arg)
-    // console.log(arg.event._def.title);
-    // console.log(arg.event._def.date);
     this.router.navigate(['/tasks']);
   }
 

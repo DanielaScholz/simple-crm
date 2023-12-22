@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CrudServiceService } from '../services/crud-service.service';
 import { Task } from 'src/models/task.class';
-import { Firestore, doc, docData, addDoc, collection, onSnapshot, setDoc } from '@angular/fire/firestore';
+import { Firestore, onSnapshot } from '@angular/fire/firestore';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -25,7 +25,6 @@ export class DashboardComponent implements OnInit {
 
   name: string;
 
-
   constructor(
     public crud: CrudServiceService,
     public auth: AuthService) {}
@@ -36,6 +35,7 @@ export class DashboardComponent implements OnInit {
     this.unsubUser = this.subUserList();
     this.getLoginName();    
   }
+
 
   ngOnDestroy() {
     this.unsubTask();
@@ -55,6 +55,7 @@ export class DashboardComponent implements OnInit {
       this.converteDueDate()
     })
   }
+
 
   subUserList() {
     return onSnapshot(this.crud.getUserRef(), (list) => {

@@ -1,3 +1,4 @@
+/* GLOBAL STYLING */
 html,
 body {
     height: 100%;
@@ -9,6 +10,7 @@ body {
     box-sizing: border-box;
 }
 
+/* ALIGNMENT CLASSES */
 .m-0 {
     margin: 0;
 }
@@ -55,7 +57,7 @@ body {
 }
 
 
-//Sidenav
+/* SIDENAV STYLING */
 .mat-drawer-inner-container {
     width: 95% !important;
     height: 98% !important;
@@ -96,7 +98,7 @@ body {
     background-color: white !important;
 }
 
-//Error-Message
+/* ERROR-MESSAGE */
 .err-msg {
     border: 2px solid red;
     background: white;
@@ -106,8 +108,7 @@ body {
     border-radius: 10px;
 }
 
-
-//TABLE-STYLING
+/* TABLE STYLING */
 .table-styling {
     width: 100%;
     border-collapse: collapse;
@@ -164,7 +165,7 @@ body {
     }
 }
 
-//Login/Register,Verify,Forgot-password STYLING
+/* LOGIN/ REGISTER/ VERIFY/ FORGOT-PASSWORD STYLING */
 .wrapper {
     display: flex;
     align-items: center;
@@ -222,7 +223,7 @@ mat-error {
 }
 
 
-//SCROLLBAR
+/* SCROLLBAR STYLING */
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -240,7 +241,7 @@ mat-error {
     background: #555;
 }
 
-//CALENDAR CUSTOM-STYLING
+/* CALENDAR STYLING */
 .fc .fc-button-primary {
     background-color: #3f51b5;
     border: 1px solid white;

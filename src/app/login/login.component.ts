@@ -27,16 +27,13 @@ export class LoginComponent {
 
   constructor(public auth: AuthService) { }
 
-
-  login() {
-    console.log('guest login 1234');
-    
+  login() {    
     const { email, password } = this.loginForm.value;
     this.auth.login(email, password);
   }
 
+  
   guestLogin(name: string) {
     this.auth.guestLogin(name)
   }
-
 }

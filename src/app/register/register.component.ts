@@ -28,9 +28,9 @@ export class RegisterComponent {
 
   constructor(public auth: AuthService) {}
 
+
   register() {
     const { email, password, name } = this.registerForm.value;
     this.auth.register(email, password, name);
   }
-
 }

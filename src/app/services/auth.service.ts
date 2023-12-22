@@ -11,6 +11,7 @@ export class AuthService {
 
   constructor(private fireauth: AngularFireAuth, private router: Router) { }
 
+  
   //Login-method
   login(email: string, password: string) {
     this.fireauth.signInWithEmailAndPassword(email, password).then(res => {
@@ -51,7 +52,7 @@ export class AuthService {
         console.log(res.user.displayName);
         // this.router.navigate(['/login']);
       }).catch((updateProfileError: any) => {
-        // Fehler beim Aktualisieren des Anzeigenamens
+        // shows error-message while updating display name
         console.error('Error updating display name:', updateProfileError);
       });
     }, err => {
@@ -70,6 +71,7 @@ export class AuthService {
     })
   }
 
+
   //logout-method
   logout() {
     this.fireauth.signOut().then(() => {
@@ -79,6 +81,7 @@ export class AuthService {
       alert(err.message);
     })
   }
+
 
   //send-link-methode
   forgotPassword(email: string) {

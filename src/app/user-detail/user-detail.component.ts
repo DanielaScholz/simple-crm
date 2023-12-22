@@ -74,17 +74,20 @@ export class UserDetailComponent implements OnInit {
     dialog.componentInstance.dateOfBirth = new Date(this.user.dateOfBirth);
   }
 
+
   editAddressDetail() {
     let dialog = this.dialog.open(DialogEditAddressComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
     dialog.componentInstance.userId = this.userId;
   }
 
+
   deleteUser() {
     let dialog = this.dialog.open(DialogDeleteUserComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
     dialog.componentInstance.userId = this.userId;
   }
+
 
   converteDateOfBirth() {
     let timestamp = new Date(this.user.dateOfBirth)
@@ -93,6 +96,7 @@ export class UserDetailComponent implements OnInit {
     let year = timestamp.getFullYear();
     this.dateOfBirth = `${day}.${month}.${year}`;
   }
+
 
   //NOTES
   addNote() {
@@ -108,12 +112,14 @@ export class UserDetailComponent implements OnInit {
     this.crud.update(this.userId, {notes: this.notesList})
   }
 
+
   //ORDER
   openDialogAddOrder() {
     let dialog = this.dialog.open(DialogAddOrderComponent);
     dialog.componentInstance.user = new User(this.order.toJSON());
     dialog.componentInstance.userId = this.userId;
   }
+
 
   openDialogEditOrder(i) {
     let dialog = this.dialog.open(DialogEditOrderComponent);
@@ -122,9 +128,9 @@ export class UserDetailComponent implements OnInit {
     dialog.componentInstance.userId = this.userId;    
   }
 
+
   deleteOrder(i:number) {
     this.allOrders.splice(i, 1);
     this.crud.update(this.userId, {orders: this.allOrders})
   }
-
 }

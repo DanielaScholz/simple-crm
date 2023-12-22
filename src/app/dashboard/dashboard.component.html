@@ -1,9 +1,11 @@
+<!-- GREETING WIDGET -->
 <div class="card-wrapper">
     <div class="card-container">
         <mat-card class="small-card greeting">
             Welcome back, <br><span color="#FF4081">{{ name }}</span>
         </mat-card>
 
+        <!-- TASK WIDGET -->
         <mat-card class="big-card">
             <mat-card-header>
                 <mat-card-title>My tasks</mat-card-title>
@@ -33,6 +35,8 @@
         </mat-card>
     </div>
 
+
+    <!-- SALES WIDGET -->
     <div class="card-container">
         <mat-card class="small-card">
             <mat-card-header>
@@ -44,6 +48,7 @@
             </div>
         </mat-card>
 
+        <!-- MAIL WIDGET -->
         <mat-card class="big-card">
             <mat-card-header>
                 <mat-card-title>Send mail</mat-card-title>
@@ -72,6 +77,7 @@
         </mat-card>
     </div>
 
+    <!-- CALENDAR WIDGET -->
     <div class="card-container calender">
         <mat-calendar [(selected)]="selected"></mat-calendar>
     </div>
